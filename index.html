@@ -3,26 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Card</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Siemreap&display=swap" rel="stylesheet">
+    <title>KAISENTZ SELL</title>
+    
+    <!-- Fonts សម្រាប់អក្សរអង់គ្លេស និងខ្មែរ -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Siemreap&display=swap" rel="stylesheet">
+    
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
     <style>
+        /* រចនាផ្ទៃទូទៅ */
         body {
-            background-color: #0ba2b8; /* ពណ៌ Background ខាងក្រៅបណ្តោះអាសន្ន */
+            margin: 0;
+            padding: 0;
+            background-color: #0ba2b8; 
+            font-family: 'Poppins', sans-serif;
+            color: #000;
+        }
+
+        /* ផ្នែកខាងលើ (Header) */
+        .header {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: #0ba2b8;
+            border-bottom: 2px solid #000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid #000;
+        }
+
+        .app-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff; 
+            text-shadow: 2px 2px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; 
+            line-height: 1.1;
+            letter-spacing: 1px;
+        }
+        
+        .app-subtitle {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        /* ប៊ូតុង 3D ទូទៅ */
+        .btn-3d {
+            background-color: #b3e5fc;
+            border: 2px solid #000;
+            border-radius: 25px;
+            padding: 8px 15px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0px 5px 0px #000;
+            transition: all 0.1s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+
+        .btn-3d:active {
+            transform: translateY(5px);
+            box-shadow: 0px 0px 0px #000;
+        }
+
+        .login-btn {
+            background-color: #81d4fa;
+            padding: 6px 10px 6px 15px;
+            font-size: 15px;
+        }
+
+        .login-btn span.plus-icon {
+            background-color: #000;
+            color: #fff;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Poppins', 'Siemreap', sans-serif;
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        /* ផ្នែកខាងក្រោម (Content) */
+        .content {
+            padding: 25px 15px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 30px; /* ឃ្លាតពីកាតលក់ */
+        }
+
+        .game-btn {
+            flex: 1;
+            justify-content: center;
+            background-color: #81d4fa;
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        .roblox-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        /* ----- រចនាកាតលក់ (Product Card) ----- */
+        .products-container {
+            display: flex;
+            justify-content: center;
         }
 
         .product-card {
-            background-color: #1a1b2e; /* ពណ៌ផ្ទៃកាតងងឹត */
+            background-color: #1a1b2e;
             border-radius: 12px;
-            width: 350px;
+            width: 100%;
+            max-width: 380px; /* ទំហំអតិបរមារបស់កាត */
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             color: #fff;
+            font-family: 'Poppins', 'Siemreap', sans-serif;
         }
 
         .product-image {
@@ -78,7 +210,7 @@
             font-weight: 700;
             flex: 1;
             border: 1px solid #272945;
-            color: #4ade80; /* ប្តូរពណ៌តម្លៃឲ្យលេចធ្លោ (ពណ៌បៃតងខ្ចី) */
+            color: #4ade80;
         }
 
         .buy-btn {
@@ -112,33 +244,93 @@
 </head>
 <body>
 
-    <div class="product-card">
-        <!-- ដាក់ Link រូបភាពគណនី (Account) នៅទីនេះ -->
-        <img src="https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png" alt="Game Account" class="product-image">
-        
-        <div class="product-content">
-            <div class="badges">
-                <span class="badge">ស្តុក: 1</span>
-                <span class="badge">បានលក់: 177</span>
-                <span class="badge">ធានា: 99 ថ្ងៃ</span>
-            </div>
-            
-            <!-- ចំណងជើង Account (Caption) -->
-            <h3 class="product-title">. LV 2807 + V3</h3>
-            <p class="product-subtitle">BLOX FRUIT</p> <!-- ខ្ញុំបានដាក់ BLOX FRUIT ជាឧទាហរណ៍ -->
-            
-            <div class="product-footer">
-                <!-- តម្លៃ (Price) -->
-                <div class="product-price">$1.25</div>
-                <button class="buy-btn">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                    </svg>
-                    ទិញឥឡូវនេះ
-                </button>
+    <!-- ផ្នែកខាងលើ (Header) -->
+    <div class="header">
+        <div class="logo-section">
+            <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" alt="Logo" class="logo-img">
+            <div>
+                <div class="app-title">KAISENTZ</div>
+                <div class="app-subtitle">SELL</div>
             </div>
         </div>
+        
+        <button class="btn-3d login-btn" onclick="triggerGoogleLogin()">
+            Login <span class="plus-icon">+</span>
+        </button>
     </div>
 
+    <!-- ផ្នែកកណ្តាល (Content) -->
+    <div class="content">
+        <div class="section-title">🎮 Account For sell</div>
+        
+        <!-- ប៊ូតុងជ្រើសរើសប្រភេទហ្គេម -->
+        <div class="button-group">
+            <button class="btn-3d game-btn">
+                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> 
+                BLOX FRUIT
+            </button>
+            <button class="btn-3d game-btn">
+                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> 
+                STEAL AN EGG
+            </button>
+        </div>
+
+        <!-- កាតលក់គណនី (Product Card) -->
+        <div class="products-container">
+            <div class="product-card">
+                <img src="https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png" alt="Game Account" class="product-image">
+                
+                <div class="product-content">
+                    <div class="badges">
+                        <span class="badge">ស្តុក: 1</span>
+                        <span class="badge">បានលក់: 177</span>
+                        <span class="badge">ធានា: 99 ថ្ងៃ</span>
+                    </div>
+                    
+                    <h3 class="product-title">. LV 2807 + V3</h3>
+                    <p class="product-subtitle">BLOX FRUIT</p>
+                    
+                    <div class="product-footer">
+                        <div class="product-price">$1.25</div>
+                        <button class="buy-btn">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                            ទិញឥឡូវនេះ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Script សម្រាប់ Login (សូមកុំភ្លេចប្តូរ Client ID) -->
+    <script>
+        let tokenClient;
+
+        window.onload = function () {
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: 'YOUR_GOOGLE_CLIENT_ID_HERE.apps.googleusercontent.com',
+                scope: 'email profile',
+                callback: (tokenResponse) => {
+                    if (tokenResponse && tokenResponse.access_token) {
+                        alert("អ្នកបាន Login ដោយជោគជ័យ ជាមួយគណនី Gmail!");
+                        const loginBtn = document.querySelector('.login-btn');
+                        loginBtn.innerHTML = 'Logged In ✓';
+                        loginBtn.style.backgroundColor = '#a5d6a7';
+                    }
+                },
+            });
+        };
+
+        function triggerGoogleLogin() {
+            if (tokenClient) {
+                tokenClient.requestAccessToken();
+            } else {
+                alert("សូមរង់ចាំបន្តិច! ប្រព័ន្ធកំពុងដំណើរការ...");
+            }
+        }
+    </script>
 </body>
 </html>
