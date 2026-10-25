@@ -6,7 +6,6 @@
     <title>KAISENTZ SELL</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Siemreap&display=swap" rel="stylesheet">
     <style>
-        /* រក្សាម៉ូត Design ទូទៅ */
         body { margin: 0; padding: 0; background-color: #0ba2b8; font-family: 'Poppins', 'Siemreap', sans-serif; color: #000; overflow-x: hidden; }
         @keyframes pulseInOut { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
         @keyframes fallDown { 0% { transform: translateY(-100px) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0.3; } }
@@ -23,7 +22,6 @@
         .falling-logo:nth-child(10) { left: 95%; animation-duration: 14s; animation-delay: 0.2s; }
         .roblox-icon { width: 22px; height: 22px; border-radius: 4px; object-fit: cover; animation: pulseInOut 1.2s infinite ease-in-out; }
 
-        /* Header & Sidebar */
         .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background-color: #0ba2b8; border-bottom: 2px solid #000; position: relative; z-index: 10; }
         .logo-section { display: flex; align-items: center; gap: 12px; }
         .logo-img { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; border: 2px solid #000; }
@@ -49,7 +47,6 @@
         .sidebar-menu button { display: block; width: 100%; background-color: #272945; color: #fff; border: 1px solid #36395e; border-radius: 8px; padding: 12px; margin-bottom: 12px; font-size: 15px; font-family: 'Siemreap', sans-serif; text-align: left; cursor: pointer; transition: 0.2s; }
         .sidebar-menu button:hover { background-color: #5d7aff; }
 
-        /* Modals & Content */
         .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background-color: #1a1b2e; width: 90%; max-width: 380px; max-height: 85vh; overflow-y: auto; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 110; display: none; opacity: 0; transition: all 0.3s ease; color: white; box-sizing: border-box; }
         .modal.active { display: block; opacity: 1; transform: translate(-50%, -50%) scale(1); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #36395e; padding-bottom: 10px; }
@@ -63,6 +60,15 @@
         .admin-panel h3 { margin-top: 0; color: #e11d48; margin-bottom: 15px; }
         .admin-divider { border-top: 1px solid #eee; margin: 20px 0; }
         
+        .admin-prod-item { display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; padding: 10px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #ddd; }
+        .admin-prod-info { flex: 1; overflow: hidden; }
+        .admin-prod-info h4 { margin: 0 0 5px 0; font-size: 14px; font-family: 'Poppins', sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .admin-prod-info p { margin: 0; color: #e11d48; font-weight: bold; font-size: 13px; font-family: 'Poppins', sans-serif; }
+        .admin-prod-actions { display: flex; gap: 5px; }
+        .admin-prod-actions button { padding: 5px 10px; border: none; border-radius: 5px; font-size: 12px; cursor: pointer; font-family: 'Siemreap'; color: #fff; }
+        .btn-edit { background: #f59e0b; }
+        .btn-del { background: #ef4444; }
+
         .content { padding: 15px; position: relative; z-index: 10; }
         .button-group { display: flex; gap: 12px; justify-content: center; margin-bottom: 20px; }
         .btn-3d { background-color: #b3e5fc; border: 2px solid #000; border-radius: 25px; padding: 10px; font-weight: 700; cursor: pointer; box-shadow: 0px 5px 0px #000; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; }
@@ -83,13 +89,11 @@
         .order-item h4 { margin: 0; font-size: 14px; }
         .order-item p { margin: 0; color: #4ade80; font-weight: bold; font-size: 12px; }
 
-        /* Admin Inbox Tickets */
         .ticket-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #272945; border-radius: 8px; margin-bottom: 10px; cursor: pointer; border: 1px solid #36395e; transition: background 0.2s; }
         .ticket-item:hover { background: #36395e; }
         .ticket-name { font-weight: bold; margin-bottom: 5px; font-size: 14px; }
         .ticket-preview { font-size: 11px; color: #8c8ea8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
 
-        /* Chat System */
         .chat-box { display: flex; flex-direction: column; height: 400px; }
         .chat-messages { flex: 1; overflow-y: auto; background: #121322; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
         .msg-bubble { max-width: 80%; padding: 10px; border-radius: 10px; font-size: 13px; word-wrap: break-word; }
@@ -106,9 +110,7 @@
     </style>
 </head>
 <body>
-
-    <!-- Logo Profile ធ្លាក់ -->
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo">
 
     <div class="header">
         <div class="logo-section">
@@ -118,9 +120,7 @@
                 <div class="app-subtitle">SELL</div>
             </div>
         </div>
-        <div class="menu-btn" onclick="toggleSidebar()">
-            <span></span><span></span><span></span>
-        </div>
+        <div class="menu-btn" onclick="toggleSidebar()"><span></span><span></span><span></span></div>
     </div>
 
     <!-- Sidebar -->
@@ -144,8 +144,6 @@
             <button onclick="openModal('loginModal')" id="btnLogin">🔑 ចូលគណនី (Login)</button>
             <button onclick="logout()" id="btnLogout" style="display:none; background:#e11d48;">🚪 ចាកចេញ</button>
             <button onclick="openOrderHistory()" id="btnHistory">🛒 ប្រវត្តិបញ្ជាទិញ</button>
-            
-            <!-- ប៊ូតុងឆាត (ឈ្មោះនឹងប្តូរតាម Admin ឬ User) -->
             <button onclick="handleChatClick()" id="btnChat" style="background:#5d7aff;">💬 ឆាតទាក់ទង Admin</button>
         </div>
     </div>
@@ -153,16 +151,16 @@
     <!-- Modals -->
     <div class="modal" id="registerModal">
         <div class="modal-header"><h3>បង្កើតគណនីថ្មី</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
-        <div class="input-group"><label>ឈ្មោះពិត (NAME)</label><input type="text" id="regName"></div>
-        <div class="input-group"><label>ឈ្មោះគណនី (USERNAME)</label><input type="text" id="regUsername"></div>
-        <div class="input-group"><label>លេខសម្ងាត់ (PASSWORD)</label><input type="password" id="regPassword"></div>
+        <div class="input-group"><input type="text" id="regName" placeholder="ឈ្មោះពិត (NAME)"></div>
+        <div class="input-group"><input type="text" id="regUsername" placeholder="ឈ្មោះគណនី (USERNAME)"></div>
+        <div class="input-group"><input type="password" id="regPassword" placeholder="លេខសម្ងាត់ (PASSWORD)"></div>
         <button class="submit-btn" onclick="registerUser()">ចុះឈ្មោះ</button>
     </div>
 
     <div class="modal" id="loginModal">
         <div class="modal-header"><h3>ចូលគណនី</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
-        <div class="input-group"><label>USERNAME</label><input type="text" id="loginUser"></div>
-        <div class="input-group"><label>PASSWORD</label><input type="password" id="loginPass"></div>
+        <div class="input-group"><input type="text" id="loginUser" placeholder="USERNAME"></div>
+        <div class="input-group"><input type="password" id="loginPass" placeholder="PASSWORD"></div>
         <button class="submit-btn" onclick="processLogin()">ចូល</button>
     </div>
 
@@ -171,18 +169,13 @@
         <div id="orderListContainer" style="max-height: 300px; overflow-y: auto;"></div>
     </div>
 
-    <!-- Admin Inbox Modal ថ្មី -->
     <div class="modal" id="adminInboxModal">
         <div class="modal-header"><h3>📥 សារពីអតិថិជន (Inbox)</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
-        <div id="inboxListContainer" style="max-height: 400px; overflow-y: auto;">
-            <!-- បញ្ជីអតិថិជនលោតចូលទីនេះ -->
-        </div>
+        <div id="inboxListContainer" style="max-height: 400px; overflow-y: auto;"></div>
     </div>
 
-    <!-- ផ្ទាំង Chat Modal ឯកជន -->
     <div class="modal" id="chatModal">
         <div class="modal-header" style="justify-content: flex-start; gap: 10px;">
-            <!-- ប៊ូតុងត្រឡប់ក្រោយ សម្រាប់ Admin -->
             <button class="back-btn" id="chatBackBtn" onclick="backToInbox()" style="display:none;">⬅️</button>
             <h3 id="chatTitle" style="flex:1;">💬 ជំនួយការអតិថិជន</h3>
             <span class="close-modal" onclick="closeModals()">✖</span>
@@ -199,7 +192,7 @@
         </div>
     </div>
 
-    <!-- Admin Panel (ផុសទំនិញ/លុយ) -->
+    <!-- Admin Panel -->
     <div class="admin-panel" id="adminPanel">
         <h3>👑 Admin Panel</h3>
         <div style="font-weight:bold; margin-bottom:10px;">📦 ផុសទំនិញថ្មី</div>
@@ -207,8 +200,12 @@
         <div class="input-group"><input type="text" id="ap_title" placeholder="ចំណងជើង" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
         <div class="input-group"><input type="text" id="ap_price" placeholder="តម្លៃ (ឧ. $1.25)" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
         <button class="submit-btn" style="background:#36395e; color:#fff;" onclick="addNewProduct()">+ ផុសលក់ឥឡូវនេះ</button>
-
         <div class="admin-divider"></div>
+        
+        <div style="font-weight:bold; margin-bottom:10px;">⚙️ គ្រប់គ្រងទំនិញ</div>
+        <div id="adminProductList" style="max-height: 200px; overflow-y: auto; margin-bottom:15px;"></div>
+        <div class="admin-divider"></div>
+
         <div style="font-weight:bold; margin-bottom:10px;">💰 គ្រប់គ្រងទឹកប្រាក់ User</div>
         <div class="input-group"><input type="text" id="targetUserID" placeholder="លេខ ID គណនី (ឧ. KZN-123456)" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
         <div class="input-group"><input type="number" id="balanceAmount" placeholder="0.00" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
@@ -225,280 +222,180 @@
         <div class="products-container" id="productContainer"></div>
     </div>
 
+    <!-- Script ចម្បង -->
     <script>
         // Database
         let products = JSON.parse(localStorage.getItem('myProducts')) || [{ img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }];
         let users = JSON.parse(localStorage.getItem('myUsers')) || [];
-        // Chat Database (New structure: includes roomId)
-        let globalChats = JSON.parse(localStorage.getItem('myChats')) || [];
-        let currentUser = null;
-        let currentChatRoom = ""; // Store which ticket/room is currently open
+        
+        // បន្ថែមសារសាកល្បង (Demo Chat) ដើម្បីកុំឲ្យ Inbox របស់ Admin ទទេ
+        let globalChats = JSON.parse(localStorage.getItem('myChats'));
+        if (!globalChats || globalChats.length === 0) {
+            globalChats = [{ roomId: 'Customer_Demo', sender: 'Customer_Demo', role: 'user', type: 'text', content: 'សួស្តី Admin! តើមានស្តុក Account ល្អៗទេ?' }];
+            localStorage.setItem('myChats', JSON.stringify(globalChats));
+        }
+        
+        let currentUser = JSON.parse(localStorage.getItem('loggedInUser')) || null;
+        let currentChatRoom = "";
 
         function renderProducts() {
-            const container = document.getElementById("productContainer");
-            container.innerHTML = ""; 
+            const container = document.getElementById("productContainer"); container.innerHTML = ""; 
             products.forEach((p, index) => {
-                container.innerHTML += `
-                <div class="product-card">
-                    <img src="${p.img}" class="product-image">
-                    <div class="product-content">
-                        <h3 class="product-title">${p.title}</h3>
-                        <div class="product-footer">
-                            <div class="product-price">${p.price}</div>
-                            <button class="buy-btn" onclick="buyProduct(${index})">ទិញឥឡូវនេះ</button>
-                        </div>
-                    </div>
-                </div>`;
+                container.innerHTML += `<div class="product-card"><img src="${p.img}" class="product-image"><div class="product-content"><h3 class="product-title">${p.title}</h3><div class="product-footer"><div class="product-price">${p.price}</div><button class="buy-btn" onclick="buyProduct(${index})">ទិញឥឡូវនេះ</button></div></div></div>`;
             });
         }
-        renderProducts();
+
+        function renderAdminProductList() {
+            const list = document.getElementById("adminProductList"); list.innerHTML = "";
+            if (products.length === 0) { list.innerHTML = "<p style='font-size:12px; color:#888;'>មិនទាន់មានទំនិញលក់ទេ!</p>"; return; }
+            products.forEach((p, index) => {
+                list.innerHTML += `<div class="admin-prod-item"><div class="admin-prod-info"><h4>${p.title}</h4><p>${p.price}</p></div><div class="admin-prod-actions"><button class="btn-edit" onclick="editProductPrice(${index})">កែតម្លៃ</button><button class="btn-del" onclick="deleteProduct(${index})">លុប</button></div></div>`;
+            });
+        }
+
+        function addNewProduct() {
+            const img = document.getElementById('ap_img').value, title = document.getElementById('ap_title').value, price = document.getElementById('ap_price').value;
+            if(img && title && price) { products.push({ img, title, price }); saveAndRenderProducts(); alert("បានផុសដោយជោគជ័យ!"); document.getElementById('ap_img').value = ""; document.getElementById('ap_title').value = ""; document.getElementById('ap_price').value = ""; }
+        }
+
+        function deleteProduct(index) { if(confirm("តើអ្នកពិតជាចង់លុបទំនិញនេះមែនទេ?")) { products.splice(index, 1); saveAndRenderProducts(); } }
+        function editProductPrice(index) {
+            let newPrice = prompt(`សូមបញ្ចូលតម្លៃថ្មី៖`, products[index].price);
+            if (newPrice && newPrice.trim() !== "") { products[index].price = newPrice; saveAndRenderProducts(); alert("បានផ្លាស់ប្តូរតម្លៃជោគជ័យ!"); }
+        }
+        function saveAndRenderProducts() { localStorage.setItem('myProducts', JSON.stringify(products)); renderProducts(); if(currentUser && currentUser.role === 'admin') renderAdminProductList(); }
 
         function buyProduct(index) {
             if (!currentUser) { alert("សូមចូលគណនី (Login) ជាមុនសិន!"); openModal('loginModal'); return; }
             if (currentUser.role === 'admin') { alert("Admin មិនអាចទិញទំនិញបានទេ!"); return; }
-
-            let product = products[index];
-            let priceNum = parseFloat(product.price.replace(/[^0-9.]/g, '')) || 0; 
-            
-            if ((currentUser.balance || 0) < priceNum) {
-                alert(`ទឹកប្រាក់របស់អ្នកមិនគ្រប់គ្រាន់ទេ! អ្នកមាន $${currentUser.balance || 0}។ សូមឆាតទៅ Admin ដើម្បីបញ្ចូលលុយ!`);
-                return;
-            }
-
-            currentUser.balance -= priceNum;
-            currentUser.orders = currentUser.orders || [];
-            currentUser.orders.push(product);
-
-            let userIndex = users.findIndex(u => u.username === currentUser.username);
-            users[userIndex] = currentUser;
-            localStorage.setItem('myUsers', JSON.stringify(users));
-            
-            updateProfileUI(); 
-            alert("🎉 អ្នកបានបញ្ជាទិញជោគជ័យ! ទឹកប្រាក់ត្រូវបានកាត់ចេញពីគណនីរបស់អ្នក។");
+            let priceNum = parseFloat(products[index].price.replace(/[^0-9.]/g, '')) || 0; 
+            if ((currentUser.balance || 0) < priceNum) return alert(`ទឹកប្រាក់របស់អ្នកមិនគ្រប់គ្រាន់ទេ! (មានត្រឹម $${currentUser.balance || 0})`);
+            currentUser.balance -= priceNum; currentUser.orders = currentUser.orders || []; currentUser.orders.push(products[index]);
+            let userIndex = users.findIndex(u => u.username === currentUser.username); users[userIndex] = currentUser;
+            localStorage.setItem('myUsers', JSON.stringify(users)); localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
+            updateProfileUI(); alert("🎉 អ្នកបានបញ្ជាទិញជោគជ័យ!");
         }
 
-        // Modals & UI
         function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('sidebarOverlay').classList.toggle('active'); }
         function closeModals() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); document.getElementById('sidebarOverlay').classList.remove('active'); document.getElementById('sidebar').classList.remove('active'); }
         function openModal(modalId) { toggleSidebar(); document.getElementById(modalId).classList.add('active'); document.getElementById('sidebarOverlay').classList.add('active'); }
 
         function updateProfileUI() {
             if(currentUser && currentUser.role === 'user') {
-                document.getElementById('userDisplayHeader').style.display = 'none';
-                document.getElementById('profileBox').style.display = 'block';
-                document.getElementById('p_name').innerText = currentUser.name;
-                document.getElementById('p_username').innerText = currentUser.username;
-                document.getElementById('p_id').innerText = currentUser.id;
-                document.getElementById('p_balance').innerText = parseFloat(currentUser.balance || 0).toFixed(2);
-                
-                document.getElementById('btnReg').style.display = 'none';
-                document.getElementById('btnLogin').style.display = 'none';
-                document.getElementById('btnLogout').style.display = 'block';
-                document.getElementById('btnHistory').style.display = 'block';
-                document.getElementById('btnChat').innerHTML = '💬 ឆាតទាក់ទង Admin';
+                document.getElementById('userDisplayHeader').style.display = 'none'; document.getElementById('profileBox').style.display = 'block';
+                document.getElementById('p_name').innerText = currentUser.name; document.getElementById('p_username').innerText = currentUser.username; document.getElementById('p_id').innerText = currentUser.id; document.getElementById('p_balance').innerText = parseFloat(currentUser.balance || 0).toFixed(2);
+                document.getElementById('btnReg').style.display = 'none'; document.getElementById('btnLogin').style.display = 'none'; document.getElementById('btnLogout').style.display = 'block'; document.getElementById('btnHistory').style.display = 'block'; document.getElementById('btnChat').innerHTML = '💬 ឆាតទាក់ទង Admin';
             } else if (currentUser && currentUser.role === 'admin') {
-                document.getElementById('userDisplayHeader').style.display = 'block';
-                document.getElementById('userDisplayHeader').innerText = "👑 Admin VIP";
-                document.getElementById('profileBox').style.display = 'none';
-                
-                document.getElementById('btnReg').style.display = 'none';
-                document.getElementById('btnLogin').style.display = 'none';
-                document.getElementById('btnLogout').style.display = 'block';
-                document.getElementById('btnHistory').style.display = 'none'; // Admin no history
-                document.getElementById('btnChat').innerHTML = '📥 សារពីអតិថិជន (Inbox)'; // Admin Inbox View
+                document.getElementById('userDisplayHeader').style.display = 'block'; document.getElementById('userDisplayHeader').innerText = "👑 Admin VIP"; document.getElementById('profileBox').style.display = 'none';
+                document.getElementById('btnReg').style.display = 'none'; document.getElementById('btnLogin').style.display = 'none'; document.getElementById('btnLogout').style.display = 'block'; document.getElementById('btnHistory').style.display = 'none'; document.getElementById('btnChat').innerHTML = '📥 សារពីអតិថិជន (Inbox)';
             } else {
-                document.getElementById('userDisplayHeader').style.display = 'block';
-                document.getElementById('userDisplayHeader').innerText = "ភ្ញៀវ";
-                document.getElementById('profileBox').style.display = 'none';
-                
-                document.getElementById('btnReg').style.display = 'block';
-                document.getElementById('btnLogin').style.display = 'block';
-                document.getElementById('btnLogout').style.display = 'none';
-                document.getElementById('btnHistory').style.display = 'block';
-                document.getElementById('btnChat').innerHTML = '💬 ឆាតទាក់ទង Admin';
+                document.getElementById('userDisplayHeader').style.display = 'block'; document.getElementById('userDisplayHeader').innerText = "ភ្ញៀវ"; document.getElementById('profileBox').style.display = 'none';
+                document.getElementById('btnReg').style.display = 'block'; document.getElementById('btnLogin').style.display = 'block'; document.getElementById('btnLogout').style.display = 'none'; document.getElementById('btnHistory').style.display = 'block'; document.getElementById('btnChat').innerHTML = '💬 ឆាតទាក់ទង Admin';
             }
         }
 
-        // Auth
         function registerUser() {
             const name = document.getElementById('regName').value, username = document.getElementById('regUsername').value, pass = document.getElementById('regPassword').value;
-            if(!name || !username || !pass) { alert("សូមបំពេញឲ្យគ្រប់គ្រាន់!"); return; }
-            if(users.find(u => u.username === username)) { alert("Username នេះមានគេប្រើហើយ!"); return; }
-            
+            if(!name || !username || !pass) return alert("សូមបំពេញឲ្យគ្រប់គ្រាន់!"); 
+            if(users.find(u => u.username === username)) return alert("Username នេះមានគេប្រើហើយ!"); 
             const id = 'KZN-' + Math.floor(100000 + Math.random() * 900000);
             const newUser = { name, username, pass, id, role: 'user', balance: 0, orders: [] };
-            
-            users.push(newUser);
-            localStorage.setItem('myUsers', JSON.stringify(users));
-            
-            currentUser = newUser;
-            updateProfileUI();
-            alert("បង្កើតគណនីជោគជ័យ! លេខ ID: " + id); closeModals();
+            users.push(newUser); localStorage.setItem('myUsers', JSON.stringify(users));
+            currentUser = newUser; localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
+            updateProfileUI(); alert("បង្កើតគណនីជោគជ័យ! លេខ ID: " + id); closeModals();
         }
 
         function processLogin() {
             const user = document.getElementById('loginUser').value, pass = document.getElementById('loginPass').value;
             if(user === "kaisentzsellvip" && pass === "77779") {
-                currentUser = { name: 'Admin VIP', username: user, role: 'admin' };
+                currentUser = { name: 'Admin VIP', username: user, role: 'admin', id: 'ADMIN-1' };
+                localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
                 document.getElementById('adminPanel').style.display = 'block';
-                updateProfileUI(); closeModals(); return;
+                updateProfileUI(); renderAdminProductList(); closeModals(); return;
             }
-
             const foundUser = users.find(u => u.username === user && u.pass === pass);
             if(foundUser) {
-                currentUser = foundUser;
+                currentUser = foundUser; localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
                 document.getElementById('adminPanel').style.display = 'none';
                 updateProfileUI(); closeModals();
             } else { alert("មិនមានគណនីនេះទេ!"); }
         }
 
         function logout() {
-            currentUser = null; document.getElementById('adminPanel').style.display = 'none';
+            currentUser = null; localStorage.removeItem('loggedInUser');
+            document.getElementById('adminPanel').style.display = 'none';
             document.getElementById('loginUser').value = ""; document.getElementById('loginPass').value = "";
             updateProfileUI(); toggleSidebar();
         }
 
-        // TICKET CHAT SYSTEM (Support Ticket Flow)
         function handleChatClick() {
-            if(!currentUser) { alert("សូម Login ជាមុនសិន!"); return; }
-            toggleSidebar(); // Hide sidebar
-            document.getElementById('sidebarOverlay').classList.add('active'); // Keep overlay
-            
-            if (currentUser.role === 'admin') {
-                openAdminInbox();
-            } else {
-                // Normal user goes straight to their own room
-                currentChatRoom = currentUser.username;
-                document.getElementById('chatModal').classList.add('active');
-                renderChatMessages();
-            }
+            if(!currentUser) return alert("សូម Login ជាមុនសិន!"); 
+            toggleSidebar(); document.getElementById('sidebarOverlay').classList.add('active'); 
+            if (currentUser.role === 'admin') openAdminInbox();
+            else { currentChatRoom = currentUser.username; document.getElementById('chatModal').classList.add('active'); renderChatMessages(); }
         }
 
-        // Admin Inbox View
         function openAdminInbox() {
-            // Get unique users who have sent a message (or admin has replied to)
             let allRooms = globalChats.map(m => m.roomId).filter(r => r && r !== 'admin'); 
             let uniqueUsers = [...new Set(allRooms)];
-            
-            let container = document.getElementById("inboxListContainer");
-            container.innerHTML = "";
-            
-            if (uniqueUsers.length === 0) {
-                container.innerHTML = "<p style='text-align:center; color:#8c8ea8;'>មិនទាន់មានអតិថិជនឆាតមកទេ!</p>";
-            } else {
+            let container = document.getElementById("inboxListContainer"); container.innerHTML = "";
+            if (uniqueUsers.length === 0) container.innerHTML = "<p style='text-align:center; color:#8c8ea8;'>មិនទាន់មានអតិថិជនឆាតមកទេ!</p>";
+            else {
                 uniqueUsers.forEach(userRoom => {
                     let userMsgs = globalChats.filter(m => m.roomId === userRoom);
                     let lastMsg = userMsgs[userMsgs.length - 1];
                     let preview = lastMsg.type === 'text' ? lastMsg.content : (lastMsg.type === 'image' ? '📷 បានផ្ញើរូបភាព' : '🎤 បានផ្ញើសំឡេង');
-                    
-                    container.innerHTML += `
-                    <div class="ticket-item" onclick="openAdminChat('${userRoom}')">
-                        <div>
-                            <div class="ticket-name">@${userRoom}</div>
-                            <div class="ticket-preview">${lastMsg.sender === 'admin' ? 'អ្នក: ' : ''}${preview}</div>
-                        </div>
-                        <span style="color:#4ade80;">➔</span>
-                    </div>`;
+                    container.innerHTML += `<div class="ticket-item" onclick="openAdminChat('${userRoom}')"><div><div class="ticket-name">@${userRoom}</div><div class="ticket-preview">${lastMsg.sender === 'admin' ? 'អ្នក: ' : ''}${preview}</div></div><span style="color:#4ade80;">➔</span></div>`;
                 });
             }
             document.getElementById('adminInboxModal').classList.add('active');
         }
 
-        // Admin clicks a specific ticket
-        function openAdminChat(userRoom) {
-            currentChatRoom = userRoom;
-            document.getElementById('adminInboxModal').classList.remove('active'); // hide inbox
-            document.getElementById('chatModal').classList.add('active'); // show private chat
-            renderChatMessages();
-        }
+        function openAdminChat(userRoom) { currentChatRoom = userRoom; document.getElementById('adminInboxModal').classList.remove('active'); document.getElementById('chatModal').classList.add('active'); renderChatMessages(); }
+        function backToInbox() { document.getElementById('chatModal').classList.remove('active'); openAdminInbox(); }
 
-        // Admin goes back to inbox
-        function backToInbox() {
-            document.getElementById('chatModal').classList.remove('active');
-            openAdminInbox();
-        }
-
-        // Render Chat based on Current Room
         function renderChatMessages() {
             const box = document.getElementById("chatBox"); box.innerHTML = "";
-            
-            // Adjust Header Title & Back Button
-            if (currentUser.role === 'admin') {
-                document.getElementById('chatTitle').innerText = `💬 ឆាតជាមួយ @${currentChatRoom}`;
-                document.getElementById('chatBackBtn').style.display = 'block';
-            } else {
-                document.getElementById('chatTitle').innerText = `💬 ជំនួយការអតិថិជន`;
-                document.getElementById('chatBackBtn').style.display = 'none';
-            }
-
-            // Filter messages for this specific room
-            let roomMessages = globalChats.filter(m => m.roomId === currentChatRoom || (!m.roomId && m.sender === currentChatRoom)); // Fallback for old msgs
-
+            if (currentUser.role === 'admin') { document.getElementById('chatTitle').innerText = `💬 ឆាតជាមួយ @${currentChatRoom}`; document.getElementById('chatBackBtn').style.display = 'block'; } 
+            else { document.getElementById('chatTitle').innerText = `💬 ជំនួយការអតិថិជន`; document.getElementById('chatBackBtn').style.display = 'none'; }
+            let roomMessages = globalChats.filter(m => m.roomId === currentChatRoom || (!m.roomId && m.sender === currentChatRoom)); 
             roomMessages.forEach(msg => {
                 let isMe = (msg.sender === currentUser.username) || (currentUser.role==='admin' && msg.sender==='admin');
                 let contentHtml = msg.type === 'text' ? msg.content : (msg.type === 'image' ? `<img src="${msg.content}" class="msg-image">` : `<audio controls class="msg-audio" src="${msg.content}"></audio>`);
-                
                 let displayName = isMe ? 'អ្នក' : (msg.role === 'admin' ? '👑 Admin' : msg.sender);
                 box.innerHTML += `<div class="msg-bubble ${isMe ? 'msg-user' : 'msg-admin'}"><span class="msg-sender">${displayName}</span>${contentHtml}</div>`;
             });
             box.scrollTop = box.scrollHeight;
         }
 
-        // Save Message with Room ID
         function saveMessage(content, type) {
             let msgSender = currentUser.role === 'admin' ? 'admin' : currentUser.username;
-            globalChats.push({
-                roomId: currentChatRoom, // Assign to current open ticket
-                sender: msgSender, 
-                role: currentUser.role, 
-                type: type, 
-                content: content 
-            });
-            localStorage.setItem('myChats', JSON.stringify(globalChats)); 
-            renderChatMessages();
+            globalChats.push({ roomId: currentChatRoom, sender: msgSender, role: currentUser.role, type: type, content: content });
+            localStorage.setItem('myChats', JSON.stringify(globalChats)); renderChatMessages();
         }
 
-        // Chat Inputs
         function sendTextMessage() { let input = document.getElementById("chatInputText"); if(input.value.trim() !== "") { saveMessage(input.value, 'text'); input.value = ""; } }
         function sendImage(event) { let file = event.target.files[0]; if(file) { let r = new FileReader(); r.onload = e => saveMessage(e.target.result, 'image'); r.readAsDataURL(file); } }
         
-        // Voice Record
         let mediaRecorder, audioChunks = [];
         async function toggleVoiceRecord() {
             let micBtn = document.getElementById('micBtn');
             if (!mediaRecorder || mediaRecorder.state === 'inactive') {
-                try {
-                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    mediaRecorder = new MediaRecorder(stream);
-                    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
-                    mediaRecorder.onstop = () => {
-                        const reader = new FileReader(); reader.onloadend = () => saveMessage(reader.result, 'audio');
-                        reader.readAsDataURL(new Blob(audioChunks, { type: 'audio/webm' })); audioChunks = [];
-                    };
-                    mediaRecorder.start(); micBtn.classList.add('recording');
-                } catch (err) { alert("មិនអាចថតសំឡេងបានទេ! សូមបើកសិទ្ធិ Microphone។"); }
+                try { const stream = await navigator.mediaDevices.getUserMedia({ audio: true }); mediaRecorder = new MediaRecorder(stream); mediaRecorder.ondataavailable = e => audioChunks.push(e.data); mediaRecorder.onstop = () => { const reader = new FileReader(); reader.onloadend = () => saveMessage(reader.result, 'audio'); reader.readAsDataURL(new Blob(audioChunks, { type: 'audio/webm' })); audioChunks = []; }; mediaRecorder.start(); micBtn.classList.add('recording'); } 
+                catch (err) { alert("មិនអាចថតសំឡេងបានទេ! សូមបើកសិទ្ធិ Microphone។"); }
             } else { mediaRecorder.stop(); micBtn.classList.remove('recording'); }
         }
 
-        // Admin Products & Money functions
-        function addNewProduct() {
-            const img = document.getElementById('ap_img').value, title = document.getElementById('ap_title').value, price = document.getElementById('ap_price').value;
-            if(img && title && price) { products.push({ img, title, price }); localStorage.setItem('myProducts', JSON.stringify(products)); renderProducts(); alert("បានផុសដោយជោគជ័យ!"); }
-        }
         function manageBalance(action) {
             let targetId = document.getElementById('targetUserID').value.trim(); let amount = parseFloat(document.getElementById('balanceAmount').value);
             if(!targetId || isNaN(amount) || amount <= 0) return alert("បញ្ចូល ID និងលុយឲ្យត្រូវ!");
             let userIndex = users.findIndex(u => u.id === targetId);
             if(userIndex === -1) return alert("រកមិនឃើញ ID នេះទេ!");
             if(action === 'add') { users[userIndex].balance = (users[userIndex].balance || 0) + amount; alert(`បានដាក់ប្រាក់ $${amount}`); }
-            else if (action === 'deduct') {
-                if((users[userIndex].balance || 0) < amount) return alert("លុយអតិថិជនមិនគ្រប់សម្រាប់ដកទេ!");
-                users[userIndex].balance -= amount; alert(`បានដកប្រាក់ $${amount}`);
-            }
-            localStorage.setItem('myUsers', JSON.stringify(users));
+            else if (action === 'deduct') { if((users[userIndex].balance || 0) < amount) return alert("លុយអតិថិជនមិនគ្រប់!"); users[userIndex].balance -= amount; alert(`បានដកប្រាក់ $${amount}`); }
+            localStorage.setItem('myUsers', JSON.stringify(users)); document.getElementById('targetUserID').value = ""; document.getElementById('balanceAmount').value = "";
         }
 
-        // Order History
         function openOrderHistory() {
             if(!currentUser || currentUser.role === 'admin') return;
             const container = document.getElementById("orderListContainer"); container.innerHTML = "";
@@ -506,6 +403,19 @@
             else currentUser.orders.forEach(order => container.innerHTML += `<div class="order-item"><img src="${order.img}"><div><h4>${order.title}</h4><p>${order.price}</p></div></div>`);
             openModal('orderModal');
         }
+
+        // រត់មុខងារពេលកូដអានដល់ចុងបញ្ចប់ (ការពារការបាត់ទិន្នន័យពេល Refresh)
+        function initApp() {
+            renderProducts();
+            if(currentUser) {
+                updateProfileUI();
+                if(currentUser.role === 'admin') {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    renderAdminProductList();
+                }
+            }
+        }
+        initApp();
     </script>
 </body>
 </html>
