@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAISENTZ SELL</title>
+    <title>KAISENTZ SELL - Dark Mode</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Siemreap&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; padding: 0; background-color: #0ba2b8; font-family: 'Poppins', 'Siemreap', sans-serif; color: #000; overflow-x: hidden; }
+        /* ================= ពណ៌ Dark Mode ================= */
+        body { margin: 0; padding: 0; background-color: #0d0d12; font-family: 'Poppins', 'Siemreap', sans-serif; color: #ffffff; overflow-x: hidden; }
+        
         @keyframes pulseInOut { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
-        @keyframes fallDown { 0% { transform: translateY(-100px) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0.3; } }
-        .falling-logo { position: fixed; top: -60px; width: 35px; height: 35px; border-radius: 8px; z-index: 1; pointer-events: none; animation: fallDown linear infinite; }
+        @keyframes fallDown { 0% { transform: translateY(-100px) rotate(0deg); opacity: 0.5; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0.1; } }
+        
+        .falling-logo { position: fixed; top: -60px; width: 35px; height: 35px; border-radius: 8px; z-index: 1; pointer-events: none; animation: fallDown linear infinite; filter: grayscale(50%); }
         .falling-logo:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
         .falling-logo:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 2s; }
         .falling-logo:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 4s; }
@@ -20,20 +23,22 @@
         .falling-logo:nth-child(8) { left: 75%; animation-duration: 11.5s; animation-delay: 1.5s; }
         .falling-logo:nth-child(9) { left: 85%; animation-duration: 10.5s; animation-delay: 3.5s; }
         .falling-logo:nth-child(10) { left: 95%; animation-duration: 14s; animation-delay: 0.2s; }
+        
         .roblox-icon { width: 22px; height: 22px; border-radius: 4px; object-fit: cover; animation: pulseInOut 1.2s infinite ease-in-out; }
 
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background-color: #0ba2b8; border-bottom: 2px solid #000; position: relative; z-index: 10; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background-color: #15161e; border-bottom: 1px solid #2a2a35; position: relative; z-index: 10; }
         .logo-section { display: flex; align-items: center; gap: 12px; }
-        .logo-img { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; border: 2px solid #000; }
-        .app-title { font-size: 24px; font-weight: 900; color: #fff; text-shadow: 2px 2px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; line-height: 1.1; }
-        .app-subtitle { font-size: 20px; font-weight: 700; color: #000; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); }
-        .menu-btn { display: flex; flex-direction: column; gap: 5px; background-color: #b3e5fc; border: 2px solid #000; border-radius: 10px; padding: 10px; cursor: pointer; box-shadow: 0px 4px 0px #000; }
+        .logo-img { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; border: 1px solid #333; }
+        .app-title { font-size: 24px; font-weight: 900; color: #fff; line-height: 1.1; letter-spacing: 0.5px; }
+        .app-subtitle { font-size: 18px; font-weight: 700; color: #a3a5c2; }
+        
+        .menu-btn { display: flex; flex-direction: column; gap: 5px; background-color: #1e1f2b; border: 1px solid #3a3b4c; border-radius: 10px; padding: 10px; cursor: pointer; box-shadow: 0px 4px 0px #09090b; transition: 0.1s; }
         .menu-btn:active { transform: translateY(4px); box-shadow: 0px 0px 0px #000; }
-        .menu-btn span { width: 25px; height: 3px; background-color: #000; border-radius: 2px; }
+        .menu-btn span { width: 25px; height: 3px; background-color: #fff; border-radius: 2px; }
 
-        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 90; display: none; opacity: 0; transition: opacity 0.3s; }
+        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 90; display: none; opacity: 0; transition: opacity 0.3s; }
         .sidebar-overlay.active { display: block; opacity: 1; }
-        .sidebar { position: fixed; top: 0; right: -280px; width: 280px; height: 100vh; background-color: #1a1b2e; z-index: 100; transition: right 0.3s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.5); padding: 20px; box-sizing: border-box; color: #fff; overflow-y: auto; }
+        .sidebar { position: fixed; top: 0; right: -280px; width: 280px; height: 100vh; background-color: #1a1b2e; z-index: 100; transition: right 0.3s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.8); padding: 20px; box-sizing: border-box; color: #fff; overflow-y: auto; }
         .sidebar.active { right: 0; }
         .sidebar-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #36395e; padding-bottom: 15px; margin-bottom: 15px; }
         .close-sidebar { font-size: 24px; cursor: pointer; color: #a3a5c2; }
@@ -45,25 +50,27 @@
         .profile-balance { font-size: 20px; font-weight: 900; color: #ffeb3b; }
 
         .sidebar-menu button { display: block; width: 100%; background-color: #272945; color: #fff; border: 1px solid #36395e; border-radius: 8px; padding: 12px; margin-bottom: 12px; font-size: 15px; font-family: 'Siemreap', sans-serif; text-align: left; cursor: pointer; transition: 0.2s; }
-        .sidebar-menu button:hover { background-color: #5d7aff; }
+        .sidebar-menu button:hover { background-color: #36395e; }
 
-        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background-color: #1a1b2e; width: 90%; max-width: 380px; max-height: 85vh; overflow-y: auto; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 110; display: none; opacity: 0; transition: all 0.3s ease; color: white; box-sizing: border-box; }
+        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background-color: #1a1b2e; width: 90%; max-width: 380px; max-height: 85vh; overflow-y: auto; padding: 20px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.9); z-index: 110; display: none; opacity: 0; transition: all 0.3s ease; color: white; box-sizing: border-box; }
         .modal.active { display: block; opacity: 1; transform: translate(-50%, -50%) scale(1); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #36395e; padding-bottom: 10px; }
         .close-modal { font-size: 20px; cursor: pointer; color: #a3a5c2; }
         .input-group { margin-bottom: 15px; }
         .input-group label { display: block; font-size: 12px; margin-bottom: 5px; color: #8c8ea8; font-family: 'Siemreap'; }
-        .input-group input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #36395e; background-color: #121322; color: #fff; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none; }
-        .submit-btn { width: 100%; background-color: #4ade80; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Siemreap', sans-serif; margin-bottom: 10px;}
+        .input-group input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #36395e; background-color: #121322; color: #fff; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none; transition: 0.2s; }
+        .input-group input:focus { border-color: #5d7aff; }
+        .submit-btn { width: 100%; background-color: #fff; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Siemreap', sans-serif; margin-bottom: 10px;}
 
-        .admin-panel { display: none; background-color: #fff; padding: 15px; margin: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); font-family: 'Siemreap'; }
-        .admin-panel h3 { margin-top: 0; color: #e11d48; margin-bottom: 15px; }
-        .admin-divider { border-top: 1px solid #eee; margin: 20px 0; }
+        /* Admin Panel */
+        .admin-panel { display: none; background-color: #1a1b2e; padding: 15px; margin: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-family: 'Siemreap'; border: 1px solid #36395e; }
+        .admin-panel h3 { margin-top: 0; color: #f43f5e; margin-bottom: 15px; }
+        .admin-divider { border-top: 1px solid #36395e; margin: 20px 0; }
         
-        .admin-prod-item { display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; padding: 10px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #ddd; }
+        .admin-prod-item { display: flex; justify-content: space-between; align-items: center; background: #272945; padding: 10px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #36395e; color: #fff; }
         .admin-prod-info { flex: 1; overflow: hidden; }
         .admin-prod-info h4 { margin: 0 0 5px 0; font-size: 14px; font-family: 'Poppins', sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .admin-prod-info p { margin: 0; color: #e11d48; font-weight: bold; font-size: 13px; font-family: 'Poppins', sans-serif; }
+        .admin-prod-info p { margin: 0; color: #f43f5e; font-weight: bold; font-size: 13px; font-family: 'Poppins', sans-serif; }
         .admin-prod-actions { display: flex; gap: 5px; }
         .admin-prod-actions button { padding: 5px 10px; border: none; border-radius: 5px; font-size: 12px; cursor: pointer; font-family: 'Siemreap'; color: #fff; }
         .btn-edit { background: #f59e0b; }
@@ -71,17 +78,33 @@
 
         .content { padding: 15px; position: relative; z-index: 10; }
         .button-group { display: flex; gap: 12px; justify-content: center; margin-bottom: 20px; }
-        .btn-3d { background-color: #b3e5fc; border: 2px solid #000; border-radius: 25px; padding: 10px; font-weight: 700; cursor: pointer; box-shadow: 0px 5px 0px #000; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; }
-        .btn-3d:active { transform: translateY(5px); box-shadow: 0px 0px 0px #000; }
         
-        .products-container { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-        .product-card { background-color: #1a1b2e; border-radius: 12px; width: 100%; max-width: 280px; overflow: hidden; color: #fff; }
-        .product-image { width: 100%; height: 140px; object-fit: cover; }
-        .product-content { padding: 12px; }
-        .product-title { font-size: 15px; font-weight: 700; margin: 0 0 10px 0; }
-        .product-footer { display: flex; gap: 8px; align-items: center; }
-        .product-price { background-color: #121322; padding: 8px; border-radius: 10px; font-size: 15px; font-weight: 700; flex: 1; color: #4ade80; text-align: center; }
-        .buy-btn { background-color: #5d7aff; color: #fff; border: none; padding: 8px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; flex: 1; font-family: 'Siemreap'; transition: 0.2s;}
+        .btn-3d { 
+            background-color: #1e1f2b; 
+            color: #fff;
+            border: 1px solid #3a3b4c; 
+            border-radius: 25px; 
+            padding: 8px 25px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            box-shadow: 0px 4px 0px #09090b; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            justify-content: center; 
+        }
+        .btn-3d:active { transform: translateY(4px); box-shadow: 0px 0px 0px #09090b; }
+        
+        .products-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 5px; }
+        .product-card { background-color: #1a1b2e; border: 1px solid #2a2a35; border-radius: 12px; width: 100%; overflow: hidden; color: #fff; display: flex; flex-direction: column; }
+        .product-image { width: 100%; height: 110px; object-fit: cover; }
+        .product-content { padding: 10px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+        .product-title { font-size: 13px; font-weight: 700; margin: 0 0 10px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .product-footer { display: flex; flex-direction: column; gap: 8px; }
+        .product-price { background-color: #121322; padding: 6px; border-radius: 8px; font-size: 14px; font-weight: 700; color: #4ade80; text-align: center; border: 1px solid #272945;}
+        .buy-btn { background-color: #fff; color: #000; border: none; padding: 8px; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: pointer; font-family: 'Siemreap'; transition: 0.2s; text-align: center; }
+        .buy-btn:hover { background-color: #ddd; }
         
         .order-item { display: flex; align-items: center; gap: 10px; background: #272945; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
         .order-item img { width: 50px; height: 50px; border-radius: 5px; object-fit: cover; }
@@ -95,16 +118,17 @@
         .ticket-preview { font-size: 11px; color: #8c8ea8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
 
         .chat-box { display: flex; flex-direction: column; height: 400px; }
-        .chat-messages { flex: 1; overflow-y: auto; background: #121322; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+        .chat-messages { flex: 1; overflow-y: auto; background: #121322; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; border: 1px solid #36395e; }
         .msg-bubble { max-width: 80%; padding: 10px; border-radius: 10px; font-size: 13px; word-wrap: break-word; }
         .msg-admin { align-self: flex-start; background-color: #36395e; color: #fff; border-bottom-left-radius: 0; }
-        .msg-user { align-self: flex-end; background-color: #5d7aff; color: #fff; border-bottom-right-radius: 0; }
+        .msg-user { align-self: flex-end; background-color: #ffffff; color: #000; border-bottom-right-radius: 0; font-weight: 500; }
         .msg-sender { font-size: 10px; opacity: 0.7; margin-bottom: 3px; display: block; }
         .msg-image { max-width: 100%; border-radius: 5px; margin-top: 5px; }
         .msg-audio { max-width: 200px; margin-top: 5px; height: 35px; }
         .chat-input-area { display: flex; gap: 8px; align-items: center; }
-        .chat-input-area input[type="text"] { flex: 1; padding: 10px; border-radius: 20px; border: none; background: #272945; color: #fff; outline: none; }
-        .chat-icon-btn { background: #36395e; color: #fff; border: none; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 16px; }
+        .chat-input-area input[type="text"] { flex: 1; padding: 10px; border-radius: 20px; border: 1px solid #36395e; background: #121322; color: #fff; outline: none; }
+        .chat-icon-btn { background: #36395e; color: #fff; border: none; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 16px; transition: 0.2s;}
+        .chat-icon-btn:hover { background: #5d7aff; }
         .chat-icon-btn.recording { background: #e11d48; animation: pulseInOut 1s infinite; }
         .back-btn { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; padding: 0 10px 0 0; }
     </style>
@@ -142,9 +166,9 @@
         <div class="sidebar-menu">
             <button onclick="openModal('registerModal')" id="btnReg">📝 បង្កើតគណនី</button>
             <button onclick="openModal('loginModal')" id="btnLogin">🔑 ចូលគណនី (Login)</button>
-            <button onclick="logout()" id="btnLogout" style="display:none; background:#e11d48;">🚪 ចាកចេញ</button>
+            <button onclick="logout()" id="btnLogout" style="display:none; background:#e11d48; color:white; border-color:#e11d48;">🚪 ចាកចេញ</button>
             <button onclick="openOrderHistory()" id="btnHistory">🛒 ប្រវត្តិបញ្ជាទិញ</button>
-            <button onclick="handleChatClick()" id="btnChat" style="background:#5d7aff;">💬 ឆាតទាក់ទង Admin</button>
+            <button onclick="handleChatClick()" id="btnChat" style="background:#fff; color:#000;">💬 ឆាតទាក់ទង Admin</button>
         </div>
     </div>
 
@@ -187,7 +211,7 @@
                 <button class="chat-icon-btn" onclick="document.getElementById('imageUpload').click()">📷</button>
                 <input type="text" id="chatInputText" placeholder="វាយសារទីនេះ...">
                 <button class="chat-icon-btn" id="micBtn" onclick="toggleVoiceRecord()">🎤</button>
-                <button class="chat-icon-btn" style="background:#4ade80; color:#000;" onclick="sendTextMessage()">➤</button>
+                <button class="chat-icon-btn" style="background:#fff; color:#000;" onclick="sendTextMessage()">➤</button>
             </div>
         </div>
     </div>
@@ -196,10 +220,10 @@
     <div class="admin-panel" id="adminPanel">
         <h3>👑 Admin Panel</h3>
         <div style="font-weight:bold; margin-bottom:10px;">📦 ផុសទំនិញថ្មី</div>
-        <div class="input-group"><input type="text" id="ap_img" placeholder="Link រូបភាព" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
-        <div class="input-group"><input type="text" id="ap_title" placeholder="ចំណងជើង" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
-        <div class="input-group"><input type="text" id="ap_price" placeholder="តម្លៃ (ឧ. $1.25)" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
-        <button class="submit-btn" style="background:#36395e; color:#fff;" onclick="addNewProduct()">+ ផុសលក់ឥឡូវនេះ</button>
+        <div class="input-group"><input type="text" id="ap_img" placeholder="Link រូបភាព"></div>
+        <div class="input-group"><input type="text" id="ap_title" placeholder="ចំណងជើង"></div>
+        <div class="input-group"><input type="text" id="ap_price" placeholder="តម្លៃ (ឧ. $1.25)"></div>
+        <button class="submit-btn" style="background:#fff; color:#000;" onclick="addNewProduct()">+ ផុសលក់ឥឡូវនេះ</button>
         <div class="admin-divider"></div>
         
         <div style="font-weight:bold; margin-bottom:10px;">⚙️ គ្រប់គ្រងទំនិញ</div>
@@ -207,8 +231,8 @@
         <div class="admin-divider"></div>
 
         <div style="font-weight:bold; margin-bottom:10px;">💰 គ្រប់គ្រងទឹកប្រាក់ User</div>
-        <div class="input-group"><input type="text" id="targetUserID" placeholder="លេខ ID គណនី (ឧ. KZN-123456)" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
-        <div class="input-group"><input type="number" id="balanceAmount" placeholder="0.00" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
+        <div class="input-group"><input type="text" id="targetUserID" placeholder="លេខ ID គណនី (ឧ. KZN-123456)"></div>
+        <div class="input-group"><input type="number" id="balanceAmount" placeholder="0.00"></div>
         <div style="display: flex; gap: 10px;">
             <button class="submit-btn" style="background:#4ade80; color:#000;" onclick="manageBalance('add')">+ ដាក់ប្រាក់</button>
             <button class="submit-btn" style="background:#e11d48; color:#fff;" onclick="manageBalance('deduct')">- ដកប្រាក់</button>
@@ -224,11 +248,9 @@
 
     <!-- Script ចម្បង -->
     <script>
-        // Database
         let products = JSON.parse(localStorage.getItem('myProducts')) || [{ img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }];
         let users = JSON.parse(localStorage.getItem('myUsers')) || [];
         
-        // បន្ថែមសារសាកល្បង (Demo Chat) ដើម្បីកុំឲ្យ Inbox របស់ Admin ទទេ
         let globalChats = JSON.parse(localStorage.getItem('myChats'));
         if (!globalChats || globalChats.length === 0) {
             globalChats = [{ roomId: 'Customer_Demo', sender: 'Customer_Demo', role: 'user', type: 'text', content: 'សួស្តី Admin! តើមានស្តុក Account ល្អៗទេ?' }];
@@ -237,6 +259,17 @@
         
         let currentUser = JSON.parse(localStorage.getItem('loggedInUser')) || null;
         let currentChatRoom = "";
+
+        window.onload = () => {
+            renderProducts();
+            if(currentUser) {
+                updateProfileUI();
+                if(currentUser.role === 'admin') {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    renderAdminProductList();
+                }
+            }
+        };
 
         function renderProducts() {
             const container = document.getElementById("productContainer"); container.innerHTML = ""; 
@@ -390,32 +423,4 @@
             let targetId = document.getElementById('targetUserID').value.trim(); let amount = parseFloat(document.getElementById('balanceAmount').value);
             if(!targetId || isNaN(amount) || amount <= 0) return alert("បញ្ចូល ID និងលុយឲ្យត្រូវ!");
             let userIndex = users.findIndex(u => u.id === targetId);
-            if(userIndex === -1) return alert("រកមិនឃើញ ID នេះទេ!");
-            if(action === 'add') { users[userIndex].balance = (users[userIndex].balance || 0) + amount; alert(`បានដាក់ប្រាក់ $${amount}`); }
-            else if (action === 'deduct') { if((users[userIndex].balance || 0) < amount) return alert("លុយអតិថិជនមិនគ្រប់!"); users[userIndex].balance -= amount; alert(`បានដកប្រាក់ $${amount}`); }
-            localStorage.setItem('myUsers', JSON.stringify(users)); document.getElementById('targetUserID').value = ""; document.getElementById('balanceAmount').value = "";
-        }
-
-        function openOrderHistory() {
-            if(!currentUser || currentUser.role === 'admin') return;
-            const container = document.getElementById("orderListContainer"); container.innerHTML = "";
-            if(!currentUser.orders || currentUser.orders.length === 0) container.innerHTML = "<p style='text-align:center;'>គ្មានប្រវត្តិទិញទេ!</p>";
-            else currentUser.orders.forEach(order => container.innerHTML += `<div class="order-item"><img src="${order.img}"><div><h4>${order.title}</h4><p>${order.price}</p></div></div>`);
-            openModal('orderModal');
-        }
-
-        // រត់មុខងារពេលកូដអានដល់ចុងបញ្ចប់ (ការពារការបាត់ទិន្នន័យពេល Refresh)
-        function initApp() {
-            renderProducts();
-            if(currentUser) {
-                updateProfileUI();
-                if(currentUser.role === 'admin') {
-                    document.getElementById('adminPanel').style.display = 'block';
-                    renderAdminProductList();
-                }
-            }
-        }
-        initApp();
-    </script>
-</body>
-</html>
+            
