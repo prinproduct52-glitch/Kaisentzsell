@@ -6,33 +6,14 @@
     <title>KAISENTZ SELL</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Siemreap&display=swap" rel="stylesheet">
     <style>
+        /* រក្សាម៉ូត Design ទាំងអស់ដដែល */
         body { margin: 0; padding: 0; background-color: #0ba2b8; font-family: 'Poppins', 'Siemreap', sans-serif; color: #000; overflow-x: hidden; }
         
-        /* ចលនា Logo Roblox ផុស */
-        @keyframes pulseInOut {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); } 
-            100% { transform: scale(1); }
-        }
-        
-        /* ចលនា Logo ធ្លាក់ពីលើចុះក្រោម */
-        @keyframes fallDown {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.8; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0.3; }
-        }
+        /* ចលនា Logo */
+        @keyframes pulseInOut { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+        @keyframes fallDown { 0% { transform: translateY(-100px) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0.3; } }
 
-        .falling-logo {
-            position: fixed;
-            top: -60px;
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            z-index: 1; /* នៅក្រោយ Content */
-            pointer-events: none; /* មិនរំខានការចុច */
-            animation: fallDown linear infinite;
-        }
-
-        /* កំណត់ទីតាំង និងល្បឿនធ្លាក់សម្រាប់ Logo ទាំង ១០ */
+        .falling-logo { position: fixed; top: -60px; width: 35px; height: 35px; border-radius: 8px; z-index: 1; pointer-events: none; animation: fallDown linear infinite; }
         .falling-logo:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
         .falling-logo:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 2s; }
         .falling-logo:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 4s; }
@@ -46,6 +27,7 @@
 
         .roblox-icon { width: 22px; height: 22px; border-radius: 4px; object-fit: cover; animation: pulseInOut 1.2s infinite ease-in-out; }
 
+        /* Header & Sidebar */
         .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background-color: #0ba2b8; border-bottom: 2px solid #000; position: relative; z-index: 10; }
         .logo-section { display: flex; align-items: center; gap: 12px; }
         .logo-img { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; border: 2px solid #000; }
@@ -57,26 +39,28 @@
 
         .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 90; display: none; opacity: 0; transition: opacity 0.3s; }
         .sidebar-overlay.active { display: block; opacity: 1; }
-        .sidebar { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background-color: #1a1b2e; z-index: 100; transition: right 0.3s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.5); padding: 20px; box-sizing: border-box; color: #fff; }
+        .sidebar { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background-color: #1a1b2e; z-index: 100; transition: right 0.3s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.5); padding: 20px; box-sizing: border-box; color: #fff; overflow-y: auto; }
         .sidebar.active { right: 0; }
         .sidebar-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #36395e; padding-bottom: 15px; margin-bottom: 20px; }
         .close-sidebar { font-size: 24px; cursor: pointer; color: #a3a5c2; }
-        .sidebar-menu button, .sidebar-menu a { display: block; width: 100%; background-color: #272945; color: #fff; border: 1px solid #36395e; border-radius: 8px; padding: 12px; margin-bottom: 12px; font-size: 15px; font-family: 'Siemreap', sans-serif; text-align: left; cursor: pointer; text-decoration: none; }
-        .sidebar-menu button:hover, .sidebar-menu a:hover { background-color: #5d7aff; }
+        .sidebar-menu button { display: block; width: 100%; background-color: #272945; color: #fff; border: 1px solid #36395e; border-radius: 8px; padding: 12px; margin-bottom: 12px; font-size: 15px; font-family: 'Siemreap', sans-serif; text-align: left; cursor: pointer; transition: 0.2s; }
+        .sidebar-menu button:hover { background-color: #5d7aff; }
 
-        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background-color: #1a1b2e; width: 90%; max-width: 350px; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 110; display: none; opacity: 0; transition: all 0.3s ease; color: white; box-sizing: border-box; }
+        /* Modals (Login, Register, Order History, Chat) */
+        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background-color: #1a1b2e; width: 90%; max-width: 380px; max-height: 85vh; overflow-y: auto; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 110; display: none; opacity: 0; transition: all 0.3s ease; color: white; box-sizing: border-box; }
         .modal.active { display: block; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #36395e; padding-bottom: 10px; }
         .close-modal { font-size: 20px; cursor: pointer; color: #a3a5c2; }
+        
         .input-group { margin-bottom: 15px; }
         .input-group label { display: block; font-size: 12px; margin-bottom: 5px; color: #8c8ea8; }
         .input-group input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #36395e; background-color: #121322; color: #fff; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none; }
-        .submit-btn { width: 100%; background-color: #4ade80; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Siemreap', sans-serif; }
+        .submit-btn { width: 100%; background-color: #4ade80; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Siemreap', sans-serif; margin-bottom: 10px; }
 
+        /* Content & Products */
         .admin-panel { display: none; background-color: #fff; padding: 15px; margin: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .admin-panel h3 { margin-top: 0; color: #e11d48; }
-        
-        .content { padding: 15px; }
+        .content { padding: 15px; position: relative; z-index: 10; }
         .button-group { display: flex; gap: 12px; justify-content: center; margin-bottom: 20px; }
         .btn-3d { background-color: #b3e5fc; border: 2px solid #000; border-radius: 25px; padding: 10px; font-weight: 700; cursor: pointer; box-shadow: 0px 5px 0px #000; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; }
         .btn-3d:active { transform: translateY(5px); box-shadow: 0px 0px 0px #000; }
@@ -89,21 +73,37 @@
         .product-footer { display: flex; gap: 8px; align-items: center; }
         .product-price { background-color: #121322; padding: 8px; border-radius: 10px; font-size: 15px; font-weight: 700; flex: 1; color: #4ade80; text-align: center; }
         .buy-btn { background-color: #5d7aff; color: #fff; border: none; padding: 8px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; flex: 1; }
+
+        /* Order History List */
+        .order-item { display: flex; align-items: center; gap: 10px; background: #272945; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
+        .order-item img { width: 50px; height: 50px; border-radius: 5px; object-fit: cover; }
+        .order-item div { flex: 1; }
+        .order-item h4 { margin: 0; font-size: 14px; }
+        .order-item p { margin: 0; color: #4ade80; font-weight: bold; font-size: 12px; }
+
+        /* Chat System */
+        .chat-box { display: flex; flex-direction: column; height: 400px; }
+        .chat-messages { flex: 1; overflow-y: auto; background: #121322; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+        
+        .msg-bubble { max-width: 80%; padding: 10px; border-radius: 10px; font-size: 13px; word-wrap: break-word; }
+        .msg-admin { align-self: flex-start; background-color: #36395e; color: #fff; border-bottom-left-radius: 0; }
+        .msg-user { align-self: flex-end; background-color: #5d7aff; color: #fff; border-bottom-right-radius: 0; }
+        .msg-sender { font-size: 10px; opacity: 0.7; margin-bottom: 3px; display: block; }
+        
+        .msg-image { max-width: 100%; border-radius: 5px; margin-top: 5px; }
+        .msg-audio { max-width: 200px; margin-top: 5px; height: 35px; }
+
+        .chat-input-area { display: flex; gap: 8px; align-items: center; }
+        .chat-input-area input[type="text"] { flex: 1; padding: 10px; border-radius: 20px; border: none; background: #272945; color: #fff; outline: none; }
+        
+        .chat-icon-btn { background: #36395e; color: #fff; border: none; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 16px; }
+        .chat-icon-btn.recording { background: #e11d48; animation: pulseInOut 1s infinite; }
     </style>
 </head>
 <body>
 
-    <!-- Logo Profile ធ្លាក់ពីលើចំនួន ១០ គ្រាប់ -->
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <!-- Logo Profile ធ្លាក់ -->
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
 
     <div class="header">
         <div class="logo-section">
@@ -126,58 +126,61 @@
             <span class="close-sidebar" onclick="toggleSidebar()">✖</span>
         </div>
         <div class="sidebar-menu">
-            <button onclick="openRegisterModal()">📝 បង្កើតគណនី</button>
-            <button onclick="openLoginModal()">🔑 ចូលគណនី (Login)</button>
-            <button onclick="logout()" id="logoutBtn" style="display:none; background:#e11d48;">🚪 ចាកចេញ</button>
-            <button>🛒 ប្រវត្តិបញ្ជាទិញ</button>
-            <a href="https://t.me/Prin_support" target="_blank">💬 ទាក់ទងអេតមីន</a>
+            <button onclick="openModal('registerModal')" id="btnReg">📝 បង្កើតគណនី</button>
+            <button onclick="openModal('loginModal')" id="btnLogin">🔑 ចូលគណនី (Login)</button>
+            <button onclick="logout()" id="btnLogout" style="display:none; background:#e11d48;">🚪 ចាកចេញ</button>
+            <button onclick="openOrderHistory()">🛒 ប្រវត្តិបញ្ជាទិញ</button>
+            <button onclick="openChatModal()" style="background:#5d7aff;">💬 ឆាតទាក់ទង Admin</button>
         </div>
     </div>
 
-    <!-- ផ្ទាំងបង្កើតគណនី (Register Modal) -->
+    <!-- ផ្ទាំងបង្កើតគណនី -->
     <div class="modal" id="registerModal">
-        <div class="modal-header">
-            <h3>បង្កើតគណនីថ្មី</h3>
-            <span class="close-modal" onclick="closeModals()">✖</span>
-        </div>
-        <div class="input-group">
-            <label>ឈ្មោះពិត (NAME)</label>
-            <input type="text" id="regName" placeholder="បញ្ចូលឈ្មោះរបស់អ្នក">
-        </div>
-        <div class="input-group">
-            <label>ឈ្មោះគណនី (USERNAME)</label>
-            <input type="text" id="regUsername" placeholder="បញ្ចូលឈ្មោះសម្រាប់ Login">
-        </div>
-        <div class="input-group">
-            <label>លេខសម្គាល់គណនី (ID)</label>
-            <input type="text" id="autoID" disabled style="background:#272945; color:#4ade80; font-weight:bold;">
-        </div>
-        <div class="input-group">
-            <label>លេខសម្ងាត់ (PASSWORD)</label>
-            <input type="password" id="regPassword" placeholder="បញ្ចូលលេខសម្ងាត់">
-        </div>
-        <div class="input-group">
-            <label>បញ្ជាក់លេខសម្ងាត់ (VERIFY PASSWORD)</label>
-            <input type="password" id="regVerify" placeholder="បញ្ចូលលេខសម្ងាត់ម្ដងទៀត">
-        </div>
+        <div class="modal-header"><h3>បង្កើតគណនីថ្មី</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
+        <div class="input-group"><label>ឈ្មោះពិត (NAME)</label><input type="text" id="regName"></div>
+        <div class="input-group"><label>ឈ្មោះគណនី (USERNAME)</label><input type="text" id="regUsername"></div>
+        <div class="input-group"><label>លេខសម្ងាត់ (PASSWORD)</label><input type="password" id="regPassword"></div>
         <button class="submit-btn" onclick="registerUser()">ចុះឈ្មោះ</button>
     </div>
 
-    <!-- ផ្ទាំង Login Modal -->
+    <!-- ផ្ទាំង Login -->
     <div class="modal" id="loginModal">
-        <div class="modal-header">
-            <h3>ចូលគណនី</h3>
-            <span class="close-modal" onclick="closeModals()">✖</span>
-        </div>
-        <div class="input-group">
-            <label>USERNAME</label>
-            <input type="text" id="loginUser" placeholder="បញ្ចូល Username">
-        </div>
-        <div class="input-group">
-            <label>PASSWORD</label>
-            <input type="password" id="loginPass" placeholder="បញ្ចូល Password">
-        </div>
+        <div class="modal-header"><h3>ចូលគណនី</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
+        <div class="input-group"><label>USERNAME</label><input type="text" id="loginUser"></div>
+        <div class="input-group"><label>PASSWORD</label><input type="password" id="loginPass"></div>
         <button class="submit-btn" onclick="processLogin()">ចូល</button>
+    </div>
+
+    <!-- ផ្ទាំងប្រវត្តិបញ្ជាទិញ -->
+    <div class="modal" id="orderModal">
+        <div class="modal-header"><h3>🛒 ប្រវត្តិបញ្ជាទិញរបស់អ្នក</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
+        <div id="orderListContainer" style="max-height: 300px; overflow-y: auto;">
+            <!-- ទិន្នន័យទិញលោតចូលទីនេះ -->
+        </div>
+    </div>
+
+    <!-- ផ្ទាំងឆាត (Chat Support) -->
+    <div class="modal" id="chatModal">
+        <div class="modal-header"><h3>💬 ជំនួយការអតិថិជន</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
+        <div class="chat-box">
+            <div class="chat-messages" id="chatBox">
+                <!-- សារលោតចូលទីនេះ -->
+            </div>
+            <div class="chat-input-area">
+                <!-- ប៊ូតុងបញ្ជូនរូបភាព -->
+                <input type="file" id="imageUpload" accept="image/*" style="display:none;" onchange="sendImage(event)">
+                <button class="chat-icon-btn" onclick="document.getElementById('imageUpload').click()">📷</button>
+                
+                <!-- កន្លែងវាយអក្សរ -->
+                <input type="text" id="chatInputText" placeholder="វាយសារទីនេះ...">
+                
+                <!-- ប៊ូតុង Voice (Mic) -->
+                <button class="chat-icon-btn" id="micBtn" onclick="toggleVoiceRecord()">🎤</button>
+                
+                <!-- ប៊ូតុងផ្ញើ (Send) -->
+                <button class="chat-icon-btn" style="background:#4ade80; color:#000;" onclick="sendTextMessage()">➤</button>
+            </div>
+        </div>
     </div>
 
     <!-- ផ្ទាំង Admin Panel -->
@@ -189,27 +192,28 @@
         <button class="submit-btn" style="background:#e11d48; color:#fff;" onclick="addNewProduct()">+ ផុសលក់ឥឡូវនេះ</button>
     </div>
 
+    <!-- Content Area -->
     <div class="content">
         <div class="button-group">
             <button class="btn-3d" onclick="renderProducts()">
-                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> 
-                BLOX FRUIT
+                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> BLOX FRUIT
             </button>
         </div>
         <div class="products-container" id="productContainer"></div>
     </div>
 
     <script>
-        let products = JSON.parse(localStorage.getItem('myProducts')) || [
-            { img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }
-        ];
-        
+        // ១. ប្រព័ន្ធផ្ទុកទិន្នន័យ (Database ចម្លង)
+        let products = JSON.parse(localStorage.getItem('myProducts')) || [{ img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }];
         let users = JSON.parse(localStorage.getItem('myUsers')) || [];
+        let globalChats = JSON.parse(localStorage.getItem('myChats')) || [];
+        let currentUser = null; // អ្នកកំពុង Login
 
+        // ២. បង្ហាញទំនិញនៅលើអេក្រង់ និងភ្ជាប់មុខងារទិញ
         function renderProducts() {
             const container = document.getElementById("productContainer");
             container.innerHTML = ""; 
-            products.forEach(p => {
+            products.forEach((p, index) => {
                 container.innerHTML += `
                 <div class="product-card">
                     <img src="${p.img}" class="product-image">
@@ -217,7 +221,8 @@
                         <h3 class="product-title">${p.title}</h3>
                         <div class="product-footer">
                             <div class="product-price">${p.price}</div>
-                            <button class="buy-btn">ទិញឥឡូវនេះ</button>
+                            <!-- បញ្ជូន Index ទៅកាន់មុខងារទិញ -->
+                            <button class="buy-btn" onclick="buyProduct(${index})">ទិញឥឡូវនេះ</button>
                         </div>
                     </div>
                 </div>`;
@@ -225,109 +230,218 @@
         }
         renderProducts();
 
-        function addNewProduct() {
-            const img = document.getElementById('p_img').value;
-            const title = document.getElementById('p_title').value;
-            const price = document.getElementById('p_price').value;
-            if(img && title && price) {
-                products.push({ img, title, price });
-                localStorage.setItem('myProducts', JSON.stringify(products));
-                renderProducts();
-                alert("បានផុសទំនិញថ្មីដោយជោគជ័យ!");
-                document.getElementById('p_img').value = ""; document.getElementById('p_title').value = ""; document.getElementById('p_price').value = "";
+        // ៣. មុខងារបញ្ជាទិញទំនិញ
+        function buyProduct(index) {
+            if (!currentUser) {
+                alert("សុំទោស! សូមចូលគណនី (Login) ជាមុនសិន ទើបអាចទិញបាន។");
+                openModal('loginModal');
+                return;
+            }
+            if (currentUser.role === 'admin') {
+                alert("Admin មិនអាចទិញទំនិញខ្លួនឯងបានទេ!"); return;
+            }
+
+            // យកទំនិញដែលបានចុច ទៅដាក់ក្នុងប្រវត្តិបញ្ជាទិញរបស់ User
+            let product = products[index];
+            currentUser.orders = currentUser.orders || [];
+            currentUser.orders.push(product);
+
+            // Update ចូលក្នុង Database ដើម
+            let userIndex = users.findIndex(u => u.username === currentUser.username);
+            if(userIndex !== -1) {
+                users[userIndex] = currentUser;
+                localStorage.setItem('myUsers', JSON.stringify(users));
+                alert("🎉 អបអរសាទរ! អ្នកបានបញ្ជាទិញជោគជ័យ។ ចូលទៅកាន់ 'ប្រវត្តិបញ្ជាទិញ' ដើម្បីពិនិត្យមើល។");
             }
         }
 
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('sidebarOverlay').classList.toggle('active');
+        // ៤. មុខងារមើលប្រវត្តិបញ្ជាទិញ
+        function openOrderHistory() {
+            if(!currentUser || currentUser.role === 'admin') {
+                alert("សូម Login គណនីអតិថិជនជាមុនសិន!"); return;
+            }
+            
+            const container = document.getElementById("orderListContainer");
+            container.innerHTML = "";
+
+            if(!currentUser.orders || currentUser.orders.length === 0) {
+                container.innerHTML = "<p style='text-align:center; color:#8c8ea8;'>អ្នកមិនទាន់មានប្រវត្តិទិញនៅឡើយទេ!</p>";
+            } else {
+                currentUser.orders.forEach(order => {
+                    container.innerHTML += `
+                    <div class="order-item">
+                        <img src="${order.img}">
+                        <div><h4>${order.title}</h4><p>${order.price}</p></div>
+                    </div>`;
+                });
+            }
+            openModal('orderModal');
         }
 
-        function closeModals() {
-            document.getElementById('loginModal').classList.remove('active');
-            document.getElementById('registerModal').classList.remove('active');
-            document.getElementById('sidebarOverlay').classList.remove('active');
-            document.getElementById('sidebar').classList.remove('active');
+        // ៥. មុខងារប្រព័ន្ធ Chat (Text, Image, Voice)
+        function openChatModal() {
+            if(!currentUser) { alert("សូម Login ជាមុនសិន ដើម្បីឆាតទៅកាន់ Admin!"); return; }
+            openModal('chatModal');
+            renderChatMessages();
         }
 
-        function openRegisterModal() {
+        function renderChatMessages() {
+            const box = document.getElementById("chatBox");
+            box.innerHTML = "";
+            
+            globalChats.forEach(msg => {
+                // កំណត់ថាអ្នកណាជាអ្នកផ្ញើ ដើម្បីប្តូរពណ៌ Bubble ឆ្វេង/ស្តាំ
+                let isMe = (msg.sender === currentUser.username);
+                let bubbleClass = isMe ? 'msg-user' : 'msg-admin';
+                let senderName = isMe ? 'អ្នក' : (msg.role === 'admin' ? '👑 Admin' : msg.sender);
+
+                let contentHtml = "";
+                if(msg.type === 'text') contentHtml = msg.content;
+                else if(msg.type === 'image') contentHtml = `<img src="${msg.content}" class="msg-image">`;
+                else if(msg.type === 'audio') contentHtml = `<audio controls class="msg-audio" src="${msg.content}"></audio>`;
+
+                box.innerHTML += `
+                <div class="msg-bubble ${bubbleClass}">
+                    <span class="msg-sender">${senderName}</span>
+                    ${contentHtml}
+                </div>`;
+            });
+            box.scrollTop = box.scrollHeight; // អូសចុះក្រោមស្វ័យប្រវត្តិ
+        }
+
+        function saveMessage(content, type) {
+            let msg = {
+                sender: currentUser.username,
+                role: currentUser.role,
+                type: type,
+                content: content,
+                time: new Date().getTime()
+            };
+            globalChats.push(msg);
+            localStorage.setItem('myChats', JSON.stringify(globalChats));
+            renderChatMessages();
+        }
+
+        function sendTextMessage() {
+            let input = document.getElementById("chatInputText");
+            if(input.value.trim() !== "") {
+                saveMessage(input.value, 'text');
+                input.value = "";
+            }
+        }
+
+        // អានរូបភាពប្រែក្លាយជា Base64
+        function sendImage(event) {
+            let file = event.target.files[0];
+            if(file) {
+                let reader = new FileReader();
+                reader.onload = function(e) { saveMessage(e.target.result, 'image'); };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // មុខងារថតសំឡេង (Voice Record)
+        let mediaRecorder;
+        let audioChunks = [];
+        
+        async function toggleVoiceRecord() {
+            let micBtn = document.getElementById('micBtn');
+            
+            if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    
+                    mediaRecorder.ondataavailable = event => { audioChunks.push(event.data); };
+                    
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        const reader = new FileReader();
+                        reader.onloadend = () => { saveMessage(reader.result, 'audio'); };
+                        reader.readAsDataURL(audioBlob);
+                        audioChunks = []; // លុបទិន្នន័យចាស់ចោល
+                    };
+                    
+                    mediaRecorder.start();
+                    micBtn.classList.add('recording'); // ប្តូរពណ៌ឲ្យលោតផ្លេកៗ
+                } catch (err) {
+                    alert("មិនអាចថតសំឡេងបានទេ! សូមពិនិត្យមើលការអនុញ្ញាត (Microphone Permission) នៅក្នុង Browser របស់អ្នក។");
+                }
+            } else {
+                mediaRecorder.stop();
+                micBtn.classList.remove('recording');
+            }
+        }
+
+
+        // ៦. ប្រព័ន្ធ Modal, Register, Login (រក្សាដដែល គ្រាន់តែកែសម្រួលតិចតួច)
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('sidebarOverlay').classList.toggle('active'); }
+        function closeModals() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); document.getElementById('sidebarOverlay').classList.remove('active'); document.getElementById('sidebar').classList.remove('active'); }
+        
+        function openModal(modalId) {
             toggleSidebar();
-            document.getElementById('registerModal').classList.add('active');
-            document.getElementById('sidebarOverlay').classList.add('active');
-            document.getElementById('regName').value = "";
-            document.getElementById('regUsername').value = "";
-            document.getElementById('regPassword').value = "";
-            document.getElementById('regVerify').value = "";
-            document.getElementById('autoID').value = 'KZN-' + Math.floor(100000 + Math.random() * 900000);
-        }
-
-        function openLoginModal() {
-            toggleSidebar();
-            document.getElementById('loginModal').classList.add('active');
+            document.getElementById(modalId).classList.add('active');
             document.getElementById('sidebarOverlay').classList.add('active');
         }
 
         function registerUser() {
-            const name = document.getElementById('regName').value;
-            const username = document.getElementById('regUsername').value;
-            const pass = document.getElementById('regPassword').value;
-            const verify = document.getElementById('regVerify').value;
-            const id = document.getElementById('autoID').value;
-
-            if(!name || !username || !pass || !verify) {
-                alert("សូមបំពេញព័ត៌មានឲ្យបានគ្រប់គ្រាន់!"); return;
-            }
-            if(pass !== verify) {
-                alert("ការបញ្ជាក់លេខសម្ងាត់មិនត្រឹមត្រូវទេ!"); return;
-            }
+            const name = document.getElementById('regName').value, username = document.getElementById('regUsername').value, pass = document.getElementById('regPassword').value;
+            if(!name || !username || !pass) { alert("សូមបំពេញឲ្យគ្រប់គ្រាន់!"); return; }
+            if(users.find(u => u.username === username)) { alert("Username នេះមានគេប្រើហើយ!"); return; }
             
-            const existingUser = users.find(u => u.username === username);
-            if(existingUser) {
-                alert("ឈ្មោះគណនី (Username) នេះមានអ្នកប្រើប្រាស់ហើយ សូមប្តូរថ្មី!"); return;
-            }
-
-            users.push({ name, username, pass, id });
+            users.push({ name, username, pass, role: 'user', orders: [] });
             localStorage.setItem('myUsers', JSON.stringify(users));
-            alert("បង្កើតគណនីបានជោគជ័យ! លេខ ID របស់អ្នកគឺ: " + id);
-            closeModals();
+            alert("បង្កើតគណនីបានជោគជ័យ!"); closeModals();
         }
 
         function processLogin() {
-            const user = document.getElementById('loginUser').value;
-            const pass = document.getElementById('loginPass').value;
+            const user = document.getElementById('loginUser').value, pass = document.getElementById('loginPass').value;
 
             if(user === "kaisentzsellvip" && pass === "77779") {
-                alert("សួស្តី Admin! អ្នកអាចផុសទំនិញបានហើយ។");
+                currentUser = { name: 'Admin VIP', username: user, role: 'admin' };
                 document.getElementById('adminPanel').style.display = 'block';
                 loginSuccess("👑 KAISENTZ VIP");
+                alert("សួស្តី Admin! អ្នកអាចផុសទំនិញ និងឆ្លើយតបឆាតអតិថិជនបាន។");
                 return;
             }
 
             const foundUser = users.find(u => u.username === user && u.pass === pass);
-            
             if(foundUser) {
-                alert("សូមស្វាគមន៍ " + foundUser.name + "!");
+                currentUser = foundUser;
                 document.getElementById('adminPanel').style.display = 'none';
                 loginSuccess("👤 " + foundUser.name);
+                alert("សូមស្វាគមន៍ " + foundUser.name + "!");
             } else {
-                alert("មិនមានគណនីនេះទេ! សូមពិនិត្យលេខសម្ងាត់ម្ដងទៀត ឬចុះឈ្មោះថ្មី។");
+                alert("មិនមានគណនីនេះទេ!");
             }
         }
 
         function loginSuccess(displayName) {
             document.getElementById('userDisplay').innerText = displayName;
-            document.getElementById('logoutBtn').style.display = 'block';
+            document.getElementById('btnReg').style.display = 'none';
+            document.getElementById('btnLogin').style.display = 'none';
+            document.getElementById('btnLogout').style.display = 'block';
             closeModals();
         }
 
         function logout() {
+            currentUser = null;
             document.getElementById('userDisplay').innerText = "ភ្ញៀវ";
-            document.getElementById('logoutBtn').style.display = 'none';
+            document.getElementById('btnReg').style.display = 'block';
+            document.getElementById('btnLogin').style.display = 'block';
+            document.getElementById('btnLogout').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'none';
-            document.getElementById('loginUser').value = "";
-            document.getElementById('loginPass').value = "";
-            alert("បានចាកចេញពីគណនីដោយជោគជ័យ!");
-            toggleSidebar();
+            alert("បានចាកចេញពីគណនី!"); toggleSidebar();
+        }
+
+        // Admin ផុសទំនិញ (រក្សាដដែល)
+        function addNewProduct() {
+            const img = document.getElementById('p_img').value, title = document.getElementById('p_title').value, price = document.getElementById('p_price').value;
+            if(img && title && price) {
+                products.push({ img, title, price });
+                localStorage.setItem('myProducts', JSON.stringify(products));
+                renderProducts(); alert("បានផុសដោយជោគជ័យ!");
+            }
         }
     </script>
 </body>
