@@ -4,270 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KAISENTZ SELL</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Siemreap&display=swap" rel="stylesheet">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #0ba2b8; 
-            font-family: 'Poppins', 'Siemreap', sans-serif;
-            color: #000;
-            overflow-x: hidden; 
-        }
-
-        /* ----- ចលនា Logo ធ្លាក់ និងលោតផុស ----- */
-        @keyframes pulseInOut {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); } 
-            100% { transform: scale(1); }
-        }
-
-        @keyframes fallDown {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.8; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0.3; }
-        }
-
-        .falling-logo {
-            position: fixed;
-            top: -60px;
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            z-index: 1; /* ដាក់ឲ្យនៅក្រោយ Content */
-            pointer-events: none; 
-            animation: fallDown linear infinite;
-        }
-
-        .falling-logo:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
-        .falling-logo:nth-child(2) { left: 30%; animation-duration: 12s; animation-delay: 2s; }
-        .falling-logo:nth-child(3) { left: 50%; animation-duration: 9s; animation-delay: 4s; }
-        .falling-logo:nth-child(4) { left: 75%; animation-duration: 11s; animation-delay: 1s; }
-        .falling-logo:nth-child(5) { left: 90%; animation-duration: 10s; animation-delay: 3s; }
+        /* រក្សាម៉ូត Design ចាស់ទាំងអស់ដដែល */
+        body { margin: 0; padding: 0; background-color: #0ba2b8; font-family: 'Poppins', 'Siemreap', sans-serif; color: #000; overflow-x: hidden; }
         
-        /* ----- Header & Menu ----- */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background-color: #0ba2b8;
-            border-bottom: 2px solid #000;
-            position: relative;
-            z-index: 10; 
-        }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background-color: #0ba2b8; border-bottom: 2px solid #000; position: relative; z-index: 10; }
+        .logo-section { display: flex; align-items: center; gap: 12px; }
+        .logo-img { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; border: 2px solid #000; }
+        .app-title { font-size: 24px; font-weight: 900; color: #fff; text-shadow: 2px 2px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; line-height: 1.1; }
+        .app-subtitle { font-size: 20px; font-weight: 700; color: #000; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); }
+        .menu-btn { display: flex; flex-direction: column; gap: 5px; background-color: #b3e5fc; border: 2px solid #000; border-radius: 10px; padding: 10px; cursor: pointer; box-shadow: 0px 4px 0px #000; }
+        .menu-btn:active { transform: translateY(4px); box-shadow: 0px 0px 0px #000; }
+        .menu-btn span { width: 25px; height: 3px; background-color: #000; border-radius: 2px; }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-img {
-            width: 55px;
-            height: 55px;
-            border-radius: 12px;
-            object-fit: cover;
-            border: 2px solid #000;
-        }
-
-        .app-title {
-            font-size: 24px;
-            font-weight: 900;
-            color: #fff; 
-            text-shadow: 2px 2px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; 
-            line-height: 1.1;
-        }
-        
-        .app-subtitle {
-            font-size: 20px;
-            font-weight: 700;
-            color: #000;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
-        }
-
-        /* ប៊ូតុង ត្រេបី (Hamburger Menu) */
-        .menu-btn {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            background-color: #b3e5fc;
-            border: 2px solid #000;
-            border-radius: 10px;
-            padding: 10px;
-            cursor: pointer;
-            box-shadow: 0px 4px 0px #000;
-            transition: all 0.1s ease;
-        }
-
-        .menu-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0px 0px 0px #000;
-        }
-
-        .menu-btn span {
-            width: 25px;
-            height: 3px;
-            background-color: #000;
-            border-radius: 2px;
-        }
-
-        /* ----- ផ្ទាំងចំហៀង (Sidebar Panel) ----- */
-        .sidebar-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 90;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
+        /* Sidebar & Modal (រក្សាដដែល) */
+        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 90; display: none; opacity: 0; transition: opacity 0.3s; }
         .sidebar-overlay.active { display: block; opacity: 1; }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -280px; /* លាក់នៅខាងស្តាំ */
-            width: 260px;
-            height: 100vh;
-            background-color: #1a1b2e; /* ពណ៌ងងឹតដូច Product Card */
-            z-index: 100;
-            transition: right 0.3s ease;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-            padding: 20px;
-            box-sizing: border-box;
-            color: #fff;
-        }
+        .sidebar { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background-color: #1a1b2e; z-index: 100; transition: right 0.3s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.5); padding: 20px; box-sizing: border-box; color: #fff; }
         .sidebar.active { right: 0; }
-
-        .sidebar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #36395e;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .sidebar-header h3 { margin: 0; font-size: 18px; }
+        .sidebar-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #36395e; padding-bottom: 15px; margin-bottom: 20px; }
         .close-sidebar { font-size: 24px; cursor: pointer; color: #a3a5c2; }
-        .close-sidebar:hover { color: #fff; }
+        .sidebar-menu button { display: block; width: 100%; background-color: #272945; color: #fff; border: 1px solid #36395e; border-radius: 8px; padding: 12px; margin-bottom: 12px; font-size: 15px; font-family: 'Siemreap', sans-serif; text-align: left; cursor: pointer; }
+        .sidebar-menu button:hover { background-color: #5d7aff; }
 
-        .sidebar-menu button, .sidebar-menu a {
-            display: block;
-            width: 100%;
-            background-color: #272945;
-            color: #fff;
-            border: 1px solid #36395e;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
-            font-size: 15px;
-            font-family: 'Siemreap', sans-serif;
-            text-align: left;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        .sidebar-menu button:hover, .sidebar-menu a:hover { background-color: #5d7aff; }
-
-        /* ----- ផ្ទាំងបង្កើតគណនី (Register Modal) ----- */
-        .modal {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            background-color: #1a1b2e;
-            width: 90%; max-width: 350px;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-            z-index: 110;
-            display: none;
-            opacity: 0;
-            transition: all 0.3s ease;
-            color: white;
-            box-sizing: border-box;
-        }
+        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background-color: #1a1b2e; width: 90%; max-width: 350px; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 110; display: none; opacity: 0; transition: all 0.3s ease; color: white; box-sizing: border-box; }
         .modal.active { display: block; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .modal-header h3 { margin: 0; }
         .close-modal { font-size: 20px; cursor: pointer; color: #a3a5c2; }
-        
         .input-group { margin-bottom: 15px; }
         .input-group label { display: block; font-size: 12px; margin-bottom: 5px; color: #8c8ea8; }
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #36395e;
-            background-color: #121322;
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            box-sizing: border-box;
-            outline: none;
-        }
-        .input-group input:focus { border-color: #5d7aff; }
-        
-        /* Auto ID ពណ៌ខុសគេ */
-        #autoID { background-color: #272945; color: #4ade80; font-weight: bold; cursor: not-allowed; }
+        .input-group input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #36395e; background-color: #121322; color: #fff; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none; }
+        .submit-btn { width: 100%; background-color: #4ade80; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Siemreap', sans-serif; }
 
-        .submit-btn {
-            width: 100%; background-color: #4ade80; color: #000;
-            border: none; padding: 12px; border-radius: 8px;
-            font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Siemreap', sans-serif;
-        }
-
-        /* ----- Main Content (ពីមុន) ----- */
-        .content { padding: 25px 15px; position: relative; z-index: 10; }
-        .section-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: #000; display: flex; align-items: center; gap: 8px; }
+        /* Admin Panel Styles */
+        .admin-panel { display: none; background-color: #fff; padding: 15px; margin: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .admin-panel h3 { margin-top: 0; color: #e11d48; }
         
+        /* Product Cards */
+        .content { padding: 15px; }
         .button-group { display: flex; gap: 12px; justify-content: center; margin-bottom: 20px; }
-        .btn-3d {
-            background-color: #b3e5fc; border: 2px solid #000; border-radius: 25px; padding: 10px;
-            font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px;
-            cursor: pointer; box-shadow: 0px 5px 0px #000; transition: all 0.1s ease;
-            display: flex; align-items: center; gap: 8px; text-transform: uppercase; justify-content: center; flex: 1;
-        }
+        .btn-3d { background-color: #b3e5fc; border: 2px solid #000; border-radius: 25px; padding: 10px; font-weight: 700; cursor: pointer; box-shadow: 0px 5px 0px #000; display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; }
         .btn-3d:active { transform: translateY(5px); box-shadow: 0px 0px 0px #000; }
-        .roblox-icon { width: 22px; height: 22px; border-radius: 4px; object-fit: cover; animation: pulseInOut 1.2s infinite ease-in-out; }
-
-        .products-container { display: none; justify-content: center; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .product-card {
-            background-color: #1a1b2e; border-radius: 12px; width: 100%; max-width: 280px; overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); color: #fff;
-        }
-        .product-image { width: 100%; height: 140px; object-fit: cover; display: block; }
+        
+        .products-container { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .product-card { background-color: #1a1b2e; border-radius: 12px; width: 100%; max-width: 280px; overflow: hidden; color: #fff; }
+        .product-image { width: 100%; height: 140px; object-fit: cover; }
         .product-content { padding: 12px; }
-        .badges { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
-        .badge { background-color: #272945; color: #a3a5c2; padding: 3px 8px; border-radius: 20px; font-size: 10px; border: 1px solid #36395e; }
-        .product-title { font-size: 15px; font-weight: 700; margin: 0 0 4px 0; }
-        .product-subtitle { font-size: 11px; color: #8c8ea8; margin: 0 0 15px 0; text-transform: uppercase; }
+        .product-title { font-size: 15px; font-weight: 700; margin: 0 0 10px 0; }
         .product-footer { display: flex; gap: 8px; align-items: center; }
-        .product-price {
-            background-color: #121322; padding: 8px 12px; border-radius: 10px; font-size: 15px; font-weight: 700;
-            flex: 1; border: 1px solid #272945; color: #4ade80; text-align: center;
-        }
-        .buy-btn {
-            background-color: #5d7aff; color: #fff; border: none; padding: 8px 12px; border-radius: 10px;
-            font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; flex: 1.2; justify-content: center;
-        }
+        .product-price { background-color: #121322; padding: 8px; border-radius: 10px; font-size: 15px; font-weight: 700; flex: 1; color: #4ade80; text-align: center; }
+        .buy-btn { background-color: #5d7aff; color: #fff; border: none; padding: 8px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; flex: 1; }
     </style>
 </head>
 <body>
 
-    <!-- ចលនារូប Logo ធ្លាក់ -->
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
-
-    <!-- ផ្នែកខាងលើ (Header) -->
     <div class="header">
         <div class="logo-section">
             <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" alt="Logo" class="logo-img">
@@ -276,150 +67,145 @@
                 <div class="app-subtitle">SELL</div>
             </div>
         </div>
-        
-        <!-- ប៊ូតុង ត្រេបី -->
         <div class="menu-btn" onclick="toggleSidebar()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
     </div>
 
-    <!-- ផ្ទាំងចំហៀង (Sidebar) -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h3>ម៉ឺនុយជម្រើស</h3>
+            <h3 id="userDisplay">ភ្ញៀវ</h3>
             <span class="close-sidebar" onclick="toggleSidebar()">✖</span>
         </div>
         <div class="sidebar-menu">
-            <button onclick="openRegisterModal()">📝 បង្កើតគណនី</button>
-            <button onclick="triggerGoogleLogin()">🔑 ចូលគណនី (Login)</button>
-            <button>🛒 ប្រវត្តិបញ្ជាទិញ</button>
-            <!-- ភ្ជាប់ទៅកាន់ Telegram Admin -->
-            <a href="https://t.me/Prin_support" target="_blank">💬 ទាក់ទងអេតមីន</a>
+            <button onclick="openLoginModal()">🔑 ចូលគណនី (Login)</button>
         </div>
     </div>
 
-    <!-- ផ្ទាំងបង្កើតគណនី (Register Modal) -->
-    <div class="modal" id="registerModal">
+    <!-- ផ្ទាំង Login -->
+    <div class="modal" id="loginModal">
         <div class="modal-header">
-            <h3>បង្កើតគណនីថ្មី</h3>
-            <span class="close-modal" onclick="closeRegisterModal()">✖</span>
+            <h3>ចូលគណនី</h3>
+            <span class="close-modal" onclick="closeModals()">✖</span>
         </div>
         <div class="input-group">
-            <label>ឈ្មោះពិត (NAME)</label>
-            <input type="text" placeholder="បញ្ចូលឈ្មោះរបស់អ្នក">
+            <label>USERNAME</label>
+            <input type="text" id="loginUser" placeholder="ex: kaisentzsellvip">
         </div>
         <div class="input-group">
-            <label>ឈ្មោះគណនី (USERNAME)</label>
-            <input type="text" placeholder="បញ្ចូលឈ្មោះសម្រាប់ Login">
+            <label>PASSWORD (ID)</label>
+            <input type="password" id="loginPass" placeholder="ex: 77779">
         </div>
-        <div class="input-group">
-            <label>លេខសម្គាល់គណនី (ID) - កំណត់ស្វ័យប្រវត្តិ</label>
-            <input type="text" id="autoID" disabled>
-        </div>
-        <div class="input-group">
-            <label>លេខសម្ងាត់ (PASSWORD)</label>
-            <input type="password" placeholder="បញ្ចូលលេខសម្ងាត់">
-        </div>
-        <div class="input-group">
-            <label>បញ្ជាក់លេខសម្ងាត់ (VERIFY PASSWORD)</label>
-            <input type="password" placeholder="បញ្ចូលលេខសម្ងាត់ម្ដងទៀត">
-        </div>
-        <button class="submit-btn" onclick="alert('ចុះឈ្មោះបានជោគជ័យ!')">ចុះឈ្មោះ</button>
+        <button class="submit-btn" onclick="processLogin()">ចូល</button>
     </div>
 
-    <!-- ផ្នែកកណ្តាល (Content) -->
-    <div class="content">
-        <div class="section-title">🎮 Account For sell</div>
-        
-        <div class="button-group">
-            <button class="btn-3d game-btn" onclick="showBloxFruitProducts()">
-                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> 
-                BLOX FRUIT
-            </button>
-            <button class="btn-3d game-btn">
-                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> 
-                STEAL AN EGG
-            </button>
+    <!-- ផ្ទាំង Admin Panel សម្រាប់ផុសទំនិញ (លាក់ទុក នឹងបង្ហាញពេល Admin Login) -->
+    <div class="admin-panel" id="adminPanel">
+        <h3>👑 Admin Panel: ផុសទំនិញថ្មី</h3>
+        <div class="input-group">
+            <label>Link រូបភាព (Image URL)</label>
+            <input type="text" id="p_img" placeholder="ដាក់ Link រូបភាពទីនេះ..." style="border:1px solid #ccc; background:#fff; color:#000;">
         </div>
+        <div class="input-group">
+            <label>ឈ្មោះទំនិញ (Title)</label>
+            <input type="text" id="p_title" placeholder="ឧ. LV 2807 + V3" style="border:1px solid #ccc; background:#fff; color:#000;">
+        </div>
+        <div class="input-group">
+            <label>តម្លៃ (Price)</label>
+            <input type="text" id="p_price" placeholder="ឧ. $1.25" style="border:1px solid #ccc; background:#fff; color:#000;">
+        </div>
+        <button class="submit-btn" style="background:#e11d48; color:#fff;" onclick="addNewProduct()">+ ផុសលក់ឥឡូវនេះ</button>
+    </div>
 
-        <div class="products-container" id="productContainer">
-            <div class="product-card">
-                <img src="https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png" alt="Game Account" class="product-image">
-                
-                <div class="product-content">
-                    <div class="badges">
-                        <span class="badge">ស្តុក: 1</span>
-                        <span class="badge">បានលក់: 177</span>
-                        <span class="badge">ធានា: 99 ថ្ងៃ</span>
-                    </div>
-                    
-                    <h3 class="product-title">. LV 2807 + V3</h3>
-                    <p class="product-subtitle">BLOX FRUIT</p>
-                    
-                    <div class="product-footer">
-                        <div class="product-price">$1.25</div>
-                        <button class="buy-btn">ទិញឥឡូវនេះ</button>
-                    </div>
-                </div>
-            </div>
+    <div class="content">
+        <div class="button-group">
+            <button class="btn-3d" onclick="renderProducts()">BLOX FRUIT</button>
         </div>
+        <!-- កន្លែងបង្ហាញទំនិញ (ទាញចេញពី JavaScript ស្វ័យប្រវត្តិ) -->
+        <div class="products-container" id="productContainer"></div>
     </div>
 
     <script>
-        // បើក/បិទ ផ្ទាំងចំហៀង Sidebar
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
+        // ១. ប្រព័ន្ធទិន្នន័យផលិតផល (ប្រើ LocalStorage ដើម្បីកុំឲ្យបាត់ពេល Refresh)
+        let products = JSON.parse(localStorage.getItem('myProducts')) || [
+            { img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }
+        ];
 
-        // បើកផ្ទាំងបង្កើតគណនី ព្រមទាំងបង្កើត ID ស្វ័យប្រវត្តិ
-        function openRegisterModal() {
-            toggleSidebar(); // បិទ Sidebar សិន
-            document.getElementById('registerModal').classList.add('active');
-            document.getElementById('sidebarOverlay').classList.add('active'); // ប្រើ Overlay រួមគ្នា
+        // ២. មុខងារបង្ហាញផលិតផល
+        function renderProducts() {
+            const container = document.getElementById("productContainer");
+            container.innerHTML = ""; // លុបកូដចាស់
             
-            // កំណត់ Auto ID ដោយចៃដន្យ (ឧទាហរណ៍៖ KZN-102934)
-            const randomNum = Math.floor(100000 + Math.random() * 900000);
-            document.getElementById('autoID').value = 'KZN-' + randomNum;
+            products.forEach(p => {
+                const card = `
+                <div class="product-card">
+                    <img src="${p.img}" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">${p.title}</h3>
+                        <div class="product-footer">
+                            <div class="product-price">${p.price}</div>
+                            <button class="buy-btn">ទិញឥឡូវនេះ</button>
+                        </div>
+                    </div>
+                </div>`;
+                container.innerHTML += card;
+            });
+        }
+        
+        // ហៅមុខងារបង្ហាញឲ្យចេញមកភ្លាមៗពេលបើកវេបសាយ
+        renderProducts();
+
+        // ៣. មុខងារ Admin បន្ថែមផលិតផលថ្មី
+        function addNewProduct() {
+            const img = document.getElementById('p_img').value;
+            const title = document.getElementById('p_title').value;
+            const price = document.getElementById('p_price').value;
+
+            if(img && title && price) {
+                products.push({ img, title, price });
+                localStorage.setItem('myProducts', JSON.stringify(products)); // Save ចូលម៉ាស៊ីន
+                renderProducts(); // Refresh ផ្ទាំងលក់
+                alert("បានផុសទំនិញថ្មីដោយជោគជ័យ!");
+                
+                // Clear form
+                document.getElementById('p_img').value = "";
+                document.getElementById('p_title').value = "";
+                document.getElementById('p_price').value = "";
+            } else {
+                alert("សូមបំពេញព័ត៌មានឲ្យគ្រប់គ្រាន់!");
+            }
         }
 
-        // បិទផ្ទាំងបង្កើតគណនី
-        function closeRegisterModal() {
-            document.getElementById('registerModal').classList.remove('active');
+        // ៤. ប្រព័ន្ធ Login & Sidebar 
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+
+        function openLoginModal() {
+            toggleSidebar();
+            document.getElementById('loginModal').classList.add('active');
+            document.getElementById('sidebarOverlay').classList.add('active');
+        }
+
+        function closeModals() {
+            document.getElementById('loginModal').classList.remove('active');
             document.getElementById('sidebarOverlay').classList.remove('active');
         }
 
-        // បង្ហាញកាតផលិតផល
-        function showBloxFruitProducts() {
-            const productContainer = document.getElementById("productContainer");
-            productContainer.style.display = (productContainer.style.display === "none" || productContainer.style.display === "") ? "flex" : "none"; 
-        }
+        // ៥. ពិនិត្យ Admin ពេលចុចចូល
+        function processLogin() {
+            const user = document.getElementById('loginUser').value;
+            const pass = document.getElementById('loginPass').value;
 
-        // មុខងារ Login ជាមួយ Google 
-        let tokenClient;
-        window.onload = function () {
-            tokenClient = google.accounts.oauth2.initTokenClient({
-                client_id: 'YOUR_GOOGLE_CLIENT_ID_HERE.apps.googleusercontent.com',
-                scope: 'email profile',
-                callback: (tokenResponse) => {
-                    if (tokenResponse && tokenResponse.access_token) {
-                        alert("អ្នកបាន Login ដោយជោគជ័យ ជាមួយគណនី Gmail!");
-                        toggleSidebar();
-                    }
-                },
-            });
-        };
-
-        function triggerGoogleLogin() {
-            if (tokenClient) {
-                tokenClient.requestAccessToken();
+            if(user === "kaisentzsellvip" && pass === "77779") {
+                alert("សួស្តី Admin VIP 77779! អ្នកអាចផុសទំនិញបានហើយ។");
+                document.getElementById('adminPanel').style.display = 'block'; // បង្ហាញកន្លែងផុស
+                document.getElementById('userDisplay').innerText = "👑 KAISENTZ SELL VIP";
+                closeModals();
             } else {
-                alert("សូមរង់ចាំបន្តិច! ប្រព័ន្ធកំពុងដំណើរការ...");
+                alert("Username ឬ Password មិនត្រឹមត្រូវទេ!");
             }
         }
     </script>
