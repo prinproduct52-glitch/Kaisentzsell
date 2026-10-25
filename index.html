@@ -6,9 +6,46 @@
     <title>KAISENTZ SELL</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Siemreap&display=swap" rel="stylesheet">
     <style>
-        /* រក្សាម៉ូត Design ទាំងអស់ដដែល */
         body { margin: 0; padding: 0; background-color: #0ba2b8; font-family: 'Poppins', 'Siemreap', sans-serif; color: #000; overflow-x: hidden; }
         
+        /* ចលនា Logo Roblox ផុស */
+        @keyframes pulseInOut {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); } 
+            100% { transform: scale(1); }
+        }
+        
+        /* ចលនា Logo ធ្លាក់ពីលើចុះក្រោម */
+        @keyframes fallDown {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0.3; }
+        }
+
+        .falling-logo {
+            position: fixed;
+            top: -60px;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            z-index: 1; /* នៅក្រោយ Content */
+            pointer-events: none; /* មិនរំខានការចុច */
+            animation: fallDown linear infinite;
+        }
+
+        /* កំណត់ទីតាំង និងល្បឿនធ្លាក់សម្រាប់ Logo ទាំង ១០ */
+        .falling-logo:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
+        .falling-logo:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 2s; }
+        .falling-logo:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 4s; }
+        .falling-logo:nth-child(4) { left: 35%; animation-duration: 11s; animation-delay: 1s; }
+        .falling-logo:nth-child(5) { left: 45%; animation-duration: 10s; animation-delay: 3s; }
+        .falling-logo:nth-child(6) { left: 55%; animation-duration: 13s; animation-delay: 0.5s; }
+        .falling-logo:nth-child(7) { left: 65%; animation-duration: 9.5s; animation-delay: 2.5s; }
+        .falling-logo:nth-child(8) { left: 75%; animation-duration: 11.5s; animation-delay: 1.5s; }
+        .falling-logo:nth-child(9) { left: 85%; animation-duration: 10.5s; animation-delay: 3.5s; }
+        .falling-logo:nth-child(10) { left: 95%; animation-duration: 14s; animation-delay: 0.2s; }
+
+        .roblox-icon { width: 22px; height: 22px; border-radius: 4px; object-fit: cover; animation: pulseInOut 1.2s infinite ease-in-out; }
+
         .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background-color: #0ba2b8; border-bottom: 2px solid #000; position: relative; z-index: 10; }
         .logo-section { display: flex; align-items: center; gap: 12px; }
         .logo-img { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; border: 2px solid #000; }
@@ -55,6 +92,18 @@
     </style>
 </head>
 <body>
+
+    <!-- Logo Profile ធ្លាក់ពីលើចំនួន ១០ គ្រាប់ -->
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
 
     <div class="header">
         <div class="logo-section">
@@ -142,20 +191,21 @@
 
     <div class="content">
         <div class="button-group">
-            <button class="btn-3d" onclick="renderProducts()">BLOX FRUIT</button>
+            <button class="btn-3d" onclick="renderProducts()">
+                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> 
+                BLOX FRUIT
+            </button>
         </div>
         <div class="products-container" id="productContainer"></div>
     </div>
 
     <script>
-        // ១. ប្រព័ន្ធផ្ទុកទិន្នន័យ (Database ចម្លង) ក្នុង LocalStorage
         let products = JSON.parse(localStorage.getItem('myProducts')) || [
             { img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }
         ];
         
-        let users = JSON.parse(localStorage.getItem('myUsers')) || []; // កន្លែងផ្ទុកគណនីដែលបានចុះឈ្មោះ
+        let users = JSON.parse(localStorage.getItem('myUsers')) || [];
 
-        // បង្ហាញទំនិញ
         function renderProducts() {
             const container = document.getElementById("productContainer");
             container.innerHTML = ""; 
@@ -175,7 +225,6 @@
         }
         renderProducts();
 
-        // Admin ផុសទំនិញ
         function addNewProduct() {
             const img = document.getElementById('p_img').value;
             const title = document.getElementById('p_title').value;
@@ -189,7 +238,6 @@
             }
         }
 
-        // ២. ការគ្រប់គ្រងផ្ទាំង Modal និង Sidebar
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('sidebarOverlay').classList.toggle('active');
@@ -206,7 +254,6 @@
             toggleSidebar();
             document.getElementById('registerModal').classList.add('active');
             document.getElementById('sidebarOverlay').classList.add('active');
-            // លុបអក្សរចាស់ចោល និងបង្កើត ID ថ្មី
             document.getElementById('regName').value = "";
             document.getElementById('regUsername').value = "";
             document.getElementById('regPassword').value = "";
@@ -220,7 +267,6 @@
             document.getElementById('sidebarOverlay').classList.add('active');
         }
 
-        // ៣. មុខងារចុះឈ្មោះ (Register)
         function registerUser() {
             const name = document.getElementById('regName').value;
             const username = document.getElementById('regUsername').value;
@@ -235,25 +281,21 @@
                 alert("ការបញ្ជាក់លេខសម្ងាត់មិនត្រឹមត្រូវទេ!"); return;
             }
             
-            // ឆែកមើលក្រែងលោមានអ្នកប្រើ Username នេះហើយ
             const existingUser = users.find(u => u.username === username);
             if(existingUser) {
                 alert("ឈ្មោះគណនី (Username) នេះមានអ្នកប្រើប្រាស់ហើយ សូមប្តូរថ្មី!"); return;
             }
 
-            // រក្សាទុកចូលប្រព័ន្ធ
             users.push({ name, username, pass, id });
             localStorage.setItem('myUsers', JSON.stringify(users));
             alert("បង្កើតគណនីបានជោគជ័យ! លេខ ID របស់អ្នកគឺ: " + id);
             closeModals();
         }
 
-        // ៤. មុខងារចូលគណនី (Login Check)
         function processLogin() {
             const user = document.getElementById('loginUser').value;
             const pass = document.getElementById('loginPass').value;
 
-            // ឆែកមើលគណនី Admin VIP សិន
             if(user === "kaisentzsellvip" && pass === "77779") {
                 alert("សួស្តី Admin! អ្នកអាចផុសទំនិញបានហើយ។");
                 document.getElementById('adminPanel').style.display = 'block';
@@ -261,15 +303,13 @@
                 return;
             }
 
-            // ឆែកមើលគណនីធម្មតាដែលបានចុះឈ្មោះ
             const foundUser = users.find(u => u.username === user && u.pass === pass);
             
             if(foundUser) {
                 alert("សូមស្វាគមន៍ " + foundUser.name + "!");
-                document.getElementById('adminPanel').style.display = 'none'; // បិទកន្លែងផុសទំនិញ
+                document.getElementById('adminPanel').style.display = 'none';
                 loginSuccess("👤 " + foundUser.name);
             } else {
-                // បើរកមិនឃើញ
                 alert("មិនមានគណនីនេះទេ! សូមពិនិត្យលេខសម្ងាត់ម្ដងទៀត ឬចុះឈ្មោះថ្មី។");
             }
         }
@@ -280,7 +320,6 @@
             closeModals();
         }
 
-        // ចាកចេញ
         function logout() {
             document.getElementById('userDisplay').innerText = "ភ្ញៀវ";
             document.getElementById('logoutBtn').style.display = 'none';
