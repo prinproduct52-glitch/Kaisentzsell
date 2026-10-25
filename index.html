@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KAISENTZ SELL</title>
+    
+    <!-- បញ្ចូល Font Poppins ពី Google Fonts ដើម្បីឲ្យអក្សរស្អាត -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <!-- Google Identity Services សម្រាប់ Login ជាមួយ Gmail -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     
@@ -12,8 +16,8 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #0ba2b8; /* ពណ៌ផ្ទៃខាងក្រោយដូចក្នុងរូប */
-            font-family: 'Arial', sans-serif;
+            background-color: #0ba2b8; 
+            font-family: 'Poppins', sans-serif; /* ប្រើប្រាស់ Font ថ្មី */
             color: #000;
         }
 
@@ -22,7 +26,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 15px;
+            padding: 12px 15px;
             background-color: #0ba2b8;
             border-bottom: 2px solid #000;
         }
@@ -30,89 +34,96 @@
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo-img {
-            width: 50px;
-            height: 50px;
-            background-color: #000;
-            border-radius: 10px;
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
             object-fit: cover;
+            border: 2px solid #000; /* បន្ថែមស៊ុមខ្មៅឲ្យរូប */
         }
 
         .app-title {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 900;
-            color: #fff; /* ពណ៌អក្សរ KAISENTZ */
-            text-shadow: 2px 2px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* ធ្វើឲ្យអក្សរមានគែមខ្មៅ */
-            line-height: 1;
+            color: #fff; 
+            text-shadow: 2px 2px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; 
+            line-height: 1.1;
+            letter-spacing: 1px;
         }
+        
         .app-subtitle {
             font-size: 20px;
-            font-weight: bold;
+            font-weight: 700;
             color: #000;
-            text-shadow: 1px 1px 2px #fff;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         /* រចនាប៊ូតុង 3D ទូទៅ */
         .btn-3d {
             background-color: #b3e5fc;
             border: 2px solid #000;
-            border-radius: 20px;
+            border-radius: 25px;
             padding: 8px 15px;
-            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
             font-size: 14px;
             cursor: pointer;
-            box-shadow: 0px 4px 0px #000; /* ស្រមោលធ្វើឲ្យមើលទៅដូច 3D */
+            box-shadow: 0px 5px 0px #000; /* ស្រមោល 3D */
             transition: all 0.1s ease;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             text-transform: uppercase;
         }
 
         /* ពេលចុចប៊ូតុងឲ្យវាផតចុះក្រោម */
         .btn-3d:active {
-            transform: translateY(4px);
+            transform: translateY(5px);
             box-shadow: 0px 0px 0px #000;
         }
 
         /* ប៊ូតុង Login ខាងលើ */
         .login-btn {
             background-color: #81d4fa;
-            border-radius: 25px;
-            padding: 5px 10px 5px 15px;
-            font-size: 16px;
+            padding: 6px 10px 6px 15px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
         }
 
         .login-btn span.plus-icon {
             background-color: #000;
             color: #fff;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            font-size: 16px;
+            font-size: 18px;
+            line-height: 1;
         }
 
         /* រចនាផ្នែកខាងក្រោម (Content) */
         .content {
-            padding: 20px 15px;
+            padding: 25px 15px;
         }
 
         .section-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
             color: #000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .button-group {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             justify-content: center;
         }
 
@@ -121,20 +132,17 @@
             justify-content: center;
             background-color: #81d4fa;
             padding: 10px;
-            font-size: 12px;
+            font-size: 13px;
         }
 
+        /* រចនារូប Logo Roblox ក្នុងប៊ូតុង */
         .roblox-icon {
-            width: 18px;
-            height: 18px;
-            background-color: #1b5e20; /* ពណ៌តំណាង */
-            border-radius: 3px;
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            object-fit: cover;
         }
         
-        /* កន្លែងលាក់ប៊ូតុង Google ដើម */
-        #g_id_onload {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -142,15 +150,15 @@
     <!-- ផ្នែកខាងលើ (Header) -->
     <div class="header">
         <div class="logo-section">
-            <!-- សូមប្តូរ Link រូបភាពនៅទីនេះ -->
-            <img src="https://via.placeholder.com/50/000000/FFFFFF/?text=LOGO" alt="Logo" class="logo-img" id="appLogo">
+            <!-- Link រូបភាព Profile ថ្មី -->
+            <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" alt="Logo" class="logo-img">
             <div>
                 <div class="app-title">KAISENTZ</div>
                 <div class="app-subtitle">SELL</div>
             </div>
         </div>
         
-        <!-- ប៊ូតុង Login ដែលយើងរចនា (វានឹងហៅមុខងារ Google Login ពេលចុច) -->
+        <!-- ប៊ូតុង Login 3D -->
         <button class="btn-3d login-btn" onclick="triggerGoogleLogin()">
             Login <span class="plus-icon">+</span>
         </button>
@@ -162,38 +170,47 @@
         
         <div class="button-group">
             <button class="btn-3d game-btn">
-                <div class="roblox-icon" style="background-color: #0d47a1;"></div> BLOX FRUIT
+                <!-- Link រូបភាព Roblox ថ្មី -->
+                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> 
+                BLOX FRUIT
             </button>
             <button class="btn-3d game-btn">
-                <div class="roblox-icon" style="background-color: #0d47a1;"></div> STEAL AN EGG
+                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> 
+                STEAL AN EGG
             </button>
         </div>
     </div>
 
-    <!-- កូដសម្រាប់ Google Login (ទាមទារ Client ID) -->
-    <!-- សូមប្តូរ YOUR_GOOGLE_CLIENT_ID_HERE ទៅជា Client ID របស់អ្នកពិតប្រាកដ -->
-    <div id="g_id_onload"
-         data-client_id="YOUR_GOOGLE_CLIENT_ID_HERE.apps.googleusercontent.com"
-         data-context="signin"
-         data-ux_mode="popup"
-         data-callback="handleCredentialResponse"
-         data-auto_prompt="false">
-    </div>
-
     <script>
-        // មុខងារសម្រាប់ដំណើរការការ Login ជាមួយ Google ពេលចុចប៊ូតុង 3D របស់យើង
-        function triggerGoogleLogin() {
-            google.accounts.id.prompt(); 
-        }
+        let tokenClient;
 
-        // មុខងារនេះនឹងដំណើរការនៅពេល User បាន Login ជោគជ័យ
-        function handleCredentialResponse(response) {
-            console.log("Encoded JWT ID token: " + response.credential);
-            alert("អ្នកបាន Login ដោយជោគជ័យ ជាមួយគណនី Gmail!");
-            
-            // អ្នកអាចសរសេរកូដបន្ថែមនៅទីនេះ ដើម្បីបញ្ជូន Token ទៅកាន់ Server របស់អ្នក
-            document.querySelector('.login-btn').innerHTML = 'Logged In ✓';
-            document.querySelector('.login-btn').style.backgroundColor = '#a5d6a7';
+        // ដំឡើងប្រព័ន្ធ Google Login នៅពេលវេបសាយដើរពេញលេញ
+        window.onload = function () {
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                // ចំណាំ៖ អ្នកចាំបាច់ត្រូវប្តូរ ID នេះទៅជា Client ID របស់អ្នក ទើបវាដើរ 100%
+                client_id: 'YOUR_GOOGLE_CLIENT_ID_HERE.apps.googleusercontent.com',
+                scope: 'email profile',
+                callback: (tokenResponse) => {
+                    if (tokenResponse && tokenResponse.access_token) {
+                        alert("អ្នកបាន Login ដោយជោគជ័យ ជាមួយគណនី Gmail!");
+                        
+                        // ប្តូររូបរាងប៊ូតុងក្រោយពេល Login ជោគជ័យ
+                        const loginBtn = document.querySelector('.login-btn');
+                        loginBtn.innerHTML = 'Logged In ✓';
+                        loginBtn.style.backgroundColor = '#a5d6a7';
+                    }
+                },
+            });
+        };
+
+        // មុខងារសម្រាប់ដំណើរការពេលចុចប៊ូតុង Login
+        function triggerGoogleLogin() {
+            if (tokenClient) {
+                // ហៅផ្ទាំង Popup របស់ Google ឲ្យលោតឡើង
+                tokenClient.requestAccessToken();
+            } else {
+                alert("សូមរង់ចាំបន្តិច! ប្រព័ន្ធកំពុងដំណើរការ...");
+            }
         }
     </script>
 </body>
