@@ -249,15 +249,18 @@
         let currentUser = JSON.parse(localStorage.getItem('loggedInUser')) || null;
         let currentChatRoom = "";
 
-        // 3. ទាញយកទិន្នន័យភ្លាមៗពី Firebase (Real-time Listener)
+        // 3. ទាញយកទិន្នន័យភ្លាមៗពី Firebase (Real-time Listener with Array Fix)
         db.ref('products').on('value', snap => {
-            products = snap.val() || [{ img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }];
+            let data = snap.val() || [];
+            products = Array.isArray(data) ? data : Object.values(data);
+            if(products.length === 0) products = [{ img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }];
             renderProducts();
             if(currentUser && currentUser.role === 'admin') renderAdminProductList();
         });
 
         db.ref('users').on('value', snap => {
-            users = snap.val() || [];
+            let data = snap.val() || [];
+            users = Array.isArray(data) ? data : Object.values(data);
             if(currentUser && currentUser.role === 'user') {
                 let freshUser = users.find(u => u.username === currentUser.username);
                 if(freshUser) {
@@ -269,7 +272,9 @@
         });
 
         db.ref('chats').on('value', snap => {
-            globalChats = snap.val() || [{ roomId: 'Customer_Demo', sender: 'Customer_Demo', role: 'user', type: 'text', content: 'សួស្តី Admin! តើមានស្តុក Account ល្អៗទេ?' }];
+            let data = snap.val() || [];
+            globalChats = Array.isArray(data) ? data : Object.values(data);
+            if(globalChats.length === 0) globalChats = [{ roomId: 'Customer_Demo', sender: 'Customer_Demo', role: 'user', type: 'text', content: 'សួស្តី Admin! តើមានស្តុក Account ល្អៗទេ?' }];
             if(document.getElementById('chatModal').classList.contains('active')) renderChatMessages();
             if(currentUser && currentUser.role === 'admin' && document.getElementById('adminInboxModal').classList.contains('active')) openAdminInbox();
         });
@@ -375,16 +380,32 @@
             }
         }
 
-        // Authentication
+        // Authentication (បានជួសជុលបញ្ហា Array)
         function registerUser() {
-            const name = document.getElementById('regName').value, username = document.getElementById('regUsername').value, pass = document.getElementById('regPassword').value;
-            if(!name || !username || !pass) return alert("សូមបំពេញឲ្យគ្រប់គ្រាន់!"); 
-            if(users.find(u => u.username === username)) return alert("Username នេះមានគេប្រើហើយ!"); 
-            const id = 'KZN-' + Math.floor(100000 + Math.random() * 900000);
-            const newUser = { name, username, pass, id, role: 'user', balance: 0, orders: [] };
-            users.push(newUser); saveUsersToDB();
-            currentUser = newUser; localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
-            updateProfileUI(); alert("បង្កើតគណនីជោគជ័យ! លេខ ID: " + id); closeModals();
+            try {
+                const name = document.getElementById('regName').value;
+                const username = document.getElementById('regUsername').value;
+                const pass = document.getElementById('regPassword').value;
+                
+                if(!name || !username || !pass) return alert("សូមបំពេញឲ្យគ្រប់គ្រាន់!"); 
+                
+                let userArray = Array.isArray(users) ? users : Object.values(users || {});
+                if(userArray.find(u => u.username === username)) return alert("Username នេះមានគេប្រើហើយ!"); 
+                
+                const id = 'KZN-' + Math.floor(100000 + Math.random() * 900000);
+                const newUser = { name, username, pass, id, role: 'user', balance: 0, orders: [] };
+                
+                userArray.push(newUser); 
+                db.ref('users').set(userArray); 
+                
+                currentUser = newUser; 
+                localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
+                updateProfileUI(); 
+                alert("🎉 បង្កើតគណនីជោគជ័យ! លេខ ID: " + id); 
+                closeModals();
+            } catch (err) {
+                alert("មានបញ្ហា: " + err.message);
+            }
         }
 
         function processLogin() {
