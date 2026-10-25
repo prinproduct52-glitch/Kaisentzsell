@@ -40,7 +40,6 @@
         .sidebar-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #36395e; padding-bottom: 15px; margin-bottom: 15px; }
         .close-sidebar { font-size: 24px; cursor: pointer; color: #a3a5c2; }
         
-        /* Profile Details Box ថ្មី */
         .profile-box { background-color: #272945; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #36395e; display: none; }
         .profile-name { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
         .profile-sub { font-size: 12px; color: #8c8ea8; }
@@ -58,7 +57,7 @@
         .input-group { margin-bottom: 15px; }
         .input-group label { display: block; font-size: 12px; margin-bottom: 5px; color: #8c8ea8; font-family: 'Siemreap'; }
         .input-group input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #36395e; background-color: #121322; color: #fff; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none; }
-        .submit-btn { width: 100%; background-color: #4ade80; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Siemreap', sans-serif; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 5px;}
+        .submit-btn { width: 100%; background-color: #4ade80; color: #000; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Siemreap', sans-serif; margin-bottom: 10px;}
 
         .admin-panel { display: none; background-color: #fff; padding: 15px; margin: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); font-family: 'Siemreap'; }
         .admin-panel h3 { margin-top: 0; color: #e11d48; margin-bottom: 15px; }
@@ -77,13 +76,18 @@
         .product-footer { display: flex; gap: 8px; align-items: center; }
         .product-price { background-color: #121322; padding: 8px; border-radius: 10px; font-size: 15px; font-weight: 700; flex: 1; color: #4ade80; text-align: center; }
         .buy-btn { background-color: #5d7aff; color: #fff; border: none; padding: 8px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; flex: 1; font-family: 'Siemreap'; transition: 0.2s;}
-        .buy-btn:hover { background-color: #4b66df; }
-
+        
         .order-item { display: flex; align-items: center; gap: 10px; background: #272945; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
         .order-item img { width: 50px; height: 50px; border-radius: 5px; object-fit: cover; }
         .order-item div { flex: 1; }
         .order-item h4 { margin: 0; font-size: 14px; }
         .order-item p { margin: 0; color: #4ade80; font-weight: bold; font-size: 12px; }
+
+        /* Admin Inbox Tickets */
+        .ticket-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #272945; border-radius: 8px; margin-bottom: 10px; cursor: pointer; border: 1px solid #36395e; transition: background 0.2s; }
+        .ticket-item:hover { background: #36395e; }
+        .ticket-name { font-weight: bold; margin-bottom: 5px; font-size: 14px; }
+        .ticket-preview { font-size: 11px; color: #8c8ea8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
 
         /* Chat System */
         .chat-box { display: flex; flex-direction: column; height: 400px; }
@@ -98,12 +102,13 @@
         .chat-input-area input[type="text"] { flex: 1; padding: 10px; border-radius: 20px; border: none; background: #272945; color: #fff; outline: none; }
         .chat-icon-btn { background: #36395e; color: #fff; border: none; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 16px; }
         .chat-icon-btn.recording { background: #e11d48; animation: pulseInOut 1s infinite; }
+        .back-btn { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; padding: 0 10px 0 0; }
     </style>
 </head>
 <body>
 
     <!-- Logo Profile ធ្លាក់ -->
-    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
+    <img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo"><img src="https://img.sanishtech.com/u/aee6ebd5f38861f55f970b7e7111f6a1.png" class="falling-logo" alt="logo">
 
     <div class="header">
         <div class="logo-section">
@@ -126,7 +131,6 @@
             <span class="close-sidebar" onclick="toggleSidebar()">✖</span>
         </div>
 
-        <!-- ផ្ទាំងព័ត៌មានគណនី (លាក់ទុក នឹងបង្ហាញពេល Login ចូល) -->
         <div class="profile-box" id="profileBox">
             <div class="profile-name" id="p_name">Name</div>
             <div class="profile-sub">@<span id="p_username">username</span></div>
@@ -139,8 +143,10 @@
             <button onclick="openModal('registerModal')" id="btnReg">📝 បង្កើតគណនី</button>
             <button onclick="openModal('loginModal')" id="btnLogin">🔑 ចូលគណនី (Login)</button>
             <button onclick="logout()" id="btnLogout" style="display:none; background:#e11d48;">🚪 ចាកចេញ</button>
-            <button onclick="openOrderHistory()">🛒 ប្រវត្តិបញ្ជាទិញ</button>
-            <button onclick="openChatModal()" style="background:#5d7aff;">💬 ឆាតទាក់ទង Admin</button>
+            <button onclick="openOrderHistory()" id="btnHistory">🛒 ប្រវត្តិបញ្ជាទិញ</button>
+            
+            <!-- ប៊ូតុងឆាត (ឈ្មោះនឹងប្តូរតាម Admin ឬ User) -->
+            <button onclick="handleChatClick()" id="btnChat" style="background:#5d7aff;">💬 ឆាតទាក់ទង Admin</button>
         </div>
     </div>
 
@@ -161,12 +167,26 @@
     </div>
 
     <div class="modal" id="orderModal">
-        <div class="modal-header"><h3>🛒 ប្រវត្តិបញ្ជាទិញរបស់អ្នក</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
+        <div class="modal-header"><h3>🛒 ប្រវត្តិបញ្ជាទិញ</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
         <div id="orderListContainer" style="max-height: 300px; overflow-y: auto;"></div>
     </div>
 
+    <!-- Admin Inbox Modal ថ្មី -->
+    <div class="modal" id="adminInboxModal">
+        <div class="modal-header"><h3>📥 សារពីអតិថិជន (Inbox)</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
+        <div id="inboxListContainer" style="max-height: 400px; overflow-y: auto;">
+            <!-- បញ្ជីអតិថិជនលោតចូលទីនេះ -->
+        </div>
+    </div>
+
+    <!-- ផ្ទាំង Chat Modal ឯកជន -->
     <div class="modal" id="chatModal">
-        <div class="modal-header"><h3>💬 ជំនួយការអតិថិជន</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
+        <div class="modal-header" style="justify-content: flex-start; gap: 10px;">
+            <!-- ប៊ូតុងត្រឡប់ក្រោយ សម្រាប់ Admin -->
+            <button class="back-btn" id="chatBackBtn" onclick="backToInbox()" style="display:none;">⬅️</button>
+            <h3 id="chatTitle" style="flex:1;">💬 ជំនួយការអតិថិជន</h3>
+            <span class="close-modal" onclick="closeModals()">✖</span>
+        </div>
         <div class="chat-box">
             <div class="chat-messages" id="chatBox"></div>
             <div class="chat-input-area">
@@ -179,35 +199,28 @@
         </div>
     </div>
 
-    <!-- Admin Panel (មានទាំងផុសទំនិញ និងគ្រប់គ្រងលុយ) -->
+    <!-- Admin Panel (ផុសទំនិញ/លុយ) -->
     <div class="admin-panel" id="adminPanel">
         <h3>👑 Admin Panel</h3>
-        
-        <!-- ផ្នែកទី១៖ ផុសទំនិញ -->
         <div style="font-weight:bold; margin-bottom:10px;">📦 ផុសទំនិញថ្មី</div>
-        <div class="input-group"><label>Link រូបភាព</label><input type="text" id="ap_img" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
-        <div class="input-group"><label>ចំណងជើង</label><input type="text" id="ap_title" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
-        <div class="input-group"><label>តម្លៃ (ឧ. $1.25)</label><input type="text" id="ap_price" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
+        <div class="input-group"><input type="text" id="ap_img" placeholder="Link រូបភាព" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
+        <div class="input-group"><input type="text" id="ap_title" placeholder="ចំណងជើង" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
+        <div class="input-group"><input type="text" id="ap_price" placeholder="តម្លៃ (ឧ. $1.25)" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
         <button class="submit-btn" style="background:#36395e; color:#fff;" onclick="addNewProduct()">+ ផុសលក់ឥឡូវនេះ</button>
 
         <div class="admin-divider"></div>
-
-        <!-- ផ្នែកទី២៖ គ្រប់គ្រងទឹកប្រាក់ (Balance) -->
         <div style="font-weight:bold; margin-bottom:10px;">💰 គ្រប់គ្រងទឹកប្រាក់ User</div>
-        <div class="input-group"><label>លេខសម្គាល់គណនី (User ID)</label><input type="text" id="targetUserID" placeholder="ឧ. KZN-123456" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
-        <div class="input-group"><label>ចំនួនទឹកប្រាក់ ($)</label><input type="number" id="balanceAmount" placeholder="0.00" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
+        <div class="input-group"><input type="text" id="targetUserID" placeholder="លេខ ID គណនី (ឧ. KZN-123456)" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
+        <div class="input-group"><input type="number" id="balanceAmount" placeholder="0.00" style="border:1px solid #ccc; background:#fff; color:#000;"></div>
         <div style="display: flex; gap: 10px;">
             <button class="submit-btn" style="background:#4ade80; color:#000;" onclick="manageBalance('add')">+ ដាក់ប្រាក់</button>
             <button class="submit-btn" style="background:#e11d48; color:#fff;" onclick="manageBalance('deduct')">- ដកប្រាក់</button>
         </div>
     </div>
 
-    <!-- Content Area -->
     <div class="content">
         <div class="button-group">
-            <button class="btn-3d" onclick="renderProducts()">
-                <img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon" alt="Roblox"> BLOX FRUIT
-            </button>
+            <button class="btn-3d" onclick="renderProducts()"><img src="https://img.sanishtech.com/u/fdd6da2d2e64441fb845d71317b85d5d.jpeg" class="roblox-icon"> BLOX FRUIT</button>
         </div>
         <div class="products-container" id="productContainer"></div>
     </div>
@@ -216,10 +229,11 @@
         // Database
         let products = JSON.parse(localStorage.getItem('myProducts')) || [{ img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }];
         let users = JSON.parse(localStorage.getItem('myUsers')) || [];
+        // Chat Database (New structure: includes roomId)
         let globalChats = JSON.parse(localStorage.getItem('myChats')) || [];
         let currentUser = null;
+        let currentChatRoom = ""; // Store which ticket/room is currently open
 
-        // បង្ហាញទំនិញ និងមុខងារទិញកាត់លុយ
         function renderProducts() {
             const container = document.getElementById("productContainer");
             container.innerHTML = ""; 
@@ -240,54 +254,34 @@
         renderProducts();
 
         function buyProduct(index) {
-            if (!currentUser) { alert("សូមចូលគណនី (Login) ជាមុនសិន ទើបអាចទិញបាន។"); openModal('loginModal'); return; }
-            if (currentUser.role === 'admin') { alert("Admin មិនអាចទិញទំនិញខ្លួនឯងបានទេ!"); return; }
+            if (!currentUser) { alert("សូមចូលគណនី (Login) ជាមុនសិន!"); openModal('loginModal'); return; }
+            if (currentUser.role === 'admin') { alert("Admin មិនអាចទិញទំនិញបានទេ!"); return; }
 
             let product = products[index];
-            // បម្លែងអក្សរឧទាហរណ៍ "$1.25" ទៅជាលេខ 1.25 ដើម្បីងាយស្រួលគណនា
-            let priceNum = parseFloat(product.price.replace(/[^0-9.]/g, '')); 
+            let priceNum = parseFloat(product.price.replace(/[^0-9.]/g, '')) || 0; 
             
-            if(isNaN(priceNum)) priceNum = 0; // បើអត់មានតម្លៃលេខ
-
             if ((currentUser.balance || 0) < priceNum) {
-                alert(`ទឹកប្រាក់របស់អ្នកមិនគ្រប់គ្រាន់ទេ! អ្នកត្រូវការ $${priceNum} ប៉ុន្តែអ្នកមានត្រឹមតែ $${currentUser.balance || 0}។\n\nសូមឆាតទៅកាន់ Admin ដើម្បីបញ្ជូលទឹកប្រាក់បន្ថែម!`);
+                alert(`ទឹកប្រាក់របស់អ្នកមិនគ្រប់គ្រាន់ទេ! អ្នកមាន $${currentUser.balance || 0}។ សូមឆាតទៅ Admin ដើម្បីបញ្ចូលលុយ!`);
                 return;
             }
 
-            // កាត់លុយ និងរក្សាទុកប្រវត្តិទិញ
             currentUser.balance -= priceNum;
             currentUser.orders = currentUser.orders || [];
             currentUser.orders.push(product);
 
-            // Update ចូល Database
             let userIndex = users.findIndex(u => u.username === currentUser.username);
             users[userIndex] = currentUser;
             localStorage.setItem('myUsers', JSON.stringify(users));
             
-            updateProfileUI(); // Refresh ឲ្យលោតលុយថ្មីក្នុង Profile
-            alert("🎉 អបអរសាទរ! អ្នកបានបញ្ជាទិញជោគជ័យ។ ទឹកប្រាក់ត្រូវបានកាត់ចេញពីគណនីរបស់អ្នក។");
+            updateProfileUI(); 
+            alert("🎉 អ្នកបានបញ្ជាទិញជោគជ័យ! ទឹកប្រាក់ត្រូវបានកាត់ចេញពីគណនីរបស់អ្នក។");
         }
 
-        function openOrderHistory() {
-            if(!currentUser || currentUser.role === 'admin') { alert("សូម Login គណនីអតិថិជនជាមុនសិន!"); return; }
-            const container = document.getElementById("orderListContainer");
-            container.innerHTML = "";
-            if(!currentUser.orders || currentUser.orders.length === 0) {
-                container.innerHTML = "<p style='text-align:center; color:#8c8ea8;'>អ្នកមិនទាន់មានប្រវត្តិទិញនៅឡើយទេ!</p>";
-            } else {
-                currentUser.orders.forEach(order => {
-                    container.innerHTML += `<div class="order-item"><img src="${order.img}"><div><h4>${order.title}</h4><p>${order.price}</p></div></div>`;
-                });
-            }
-            openModal('orderModal');
-        }
-
-        // Sidebar & UI Update
+        // Modals & UI
         function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('sidebarOverlay').classList.toggle('active'); }
         function closeModals() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); document.getElementById('sidebarOverlay').classList.remove('active'); document.getElementById('sidebar').classList.remove('active'); }
         function openModal(modalId) { toggleSidebar(); document.getElementById(modalId).classList.add('active'); document.getElementById('sidebarOverlay').classList.add('active'); }
 
-        // Update UI របស់ Profile បន្ទាប់ពី Login ឬកាត់លុយ
         function updateProfileUI() {
             if(currentUser && currentUser.role === 'user') {
                 document.getElementById('userDisplayHeader').style.display = 'none';
@@ -300,6 +294,8 @@
                 document.getElementById('btnReg').style.display = 'none';
                 document.getElementById('btnLogin').style.display = 'none';
                 document.getElementById('btnLogout').style.display = 'block';
+                document.getElementById('btnHistory').style.display = 'block';
+                document.getElementById('btnChat').innerHTML = '💬 ឆាតទាក់ទង Admin';
             } else if (currentUser && currentUser.role === 'admin') {
                 document.getElementById('userDisplayHeader').style.display = 'block';
                 document.getElementById('userDisplayHeader').innerText = "👑 Admin VIP";
@@ -308,6 +304,8 @@
                 document.getElementById('btnReg').style.display = 'none';
                 document.getElementById('btnLogin').style.display = 'none';
                 document.getElementById('btnLogout').style.display = 'block';
+                document.getElementById('btnHistory').style.display = 'none'; // Admin no history
+                document.getElementById('btnChat').innerHTML = '📥 សារពីអតិថិជន (Inbox)'; // Admin Inbox View
             } else {
                 document.getElementById('userDisplayHeader').style.display = 'block';
                 document.getElementById('userDisplayHeader').innerText = "ភ្ញៀវ";
@@ -316,6 +314,8 @@
                 document.getElementById('btnReg').style.display = 'block';
                 document.getElementById('btnLogin').style.display = 'block';
                 document.getElementById('btnLogout').style.display = 'none';
+                document.getElementById('btnHistory').style.display = 'block';
+                document.getElementById('btnChat').innerHTML = '💬 ឆាតទាក់ទង Admin';
             }
         }
 
@@ -325,11 +325,15 @@
             if(!name || !username || !pass) { alert("សូមបំពេញឲ្យគ្រប់គ្រាន់!"); return; }
             if(users.find(u => u.username === username)) { alert("Username នេះមានគេប្រើហើយ!"); return; }
             
-            // បង្កើត ID ស្វ័យប្រវត្តិ និងកំណត់លុយ = 0
             const id = 'KZN-' + Math.floor(100000 + Math.random() * 900000);
-            users.push({ name, username, pass, id, role: 'user', balance: 0, orders: [] });
+            const newUser = { name, username, pass, id, role: 'user', balance: 0, orders: [] };
+            
+            users.push(newUser);
             localStorage.setItem('myUsers', JSON.stringify(users));
-            alert("បង្កើតគណនីបានជោគជ័យ! លេខ ID របស់អ្នកគឺ: " + id); closeModals();
+            
+            currentUser = newUser;
+            updateProfileUI();
+            alert("បង្កើតគណនីជោគជ័យ! លេខ ID: " + id); closeModals();
         }
 
         function processLogin() {
@@ -337,8 +341,7 @@
             if(user === "kaisentzsellvip" && pass === "77779") {
                 currentUser = { name: 'Admin VIP', username: user, role: 'admin' };
                 document.getElementById('adminPanel').style.display = 'block';
-                updateProfileUI(); closeModals();
-                alert("សួស្តី Admin! អ្នកចូលប្រើប្រព័ន្ធបានជោគជ័យ។"); return;
+                updateProfileUI(); closeModals(); return;
             }
 
             const foundUser = users.find(u => u.username === user && u.pass === pass);
@@ -350,63 +353,116 @@
         }
 
         function logout() {
-            currentUser = null;
-            document.getElementById('adminPanel').style.display = 'none';
+            currentUser = null; document.getElementById('adminPanel').style.display = 'none';
             document.getElementById('loginUser').value = ""; document.getElementById('loginPass').value = "";
-            updateProfileUI(); toggleSidebar(); alert("បានចាកចេញពីគណនី!"); 
+            updateProfileUI(); toggleSidebar();
         }
 
-        // Admin មុខងារ (ផុស និង បញ្ចូលលុយ)
-        function addNewProduct() {
-            const img = document.getElementById('ap_img').value, title = document.getElementById('ap_title').value, price = document.getElementById('ap_price').value;
-            if(img && title && price) {
-                products.push({ img, title, price });
-                localStorage.setItem('myProducts', JSON.stringify(products));
-                renderProducts(); alert("បានផុសដោយជោគជ័យ!");
-                document.getElementById('ap_img').value = ""; document.getElementById('ap_title').value = ""; document.getElementById('ap_price').value = "";
-            }
-        }
-
-        function manageBalance(action) {
-            let targetId = document.getElementById('targetUserID').value.trim();
-            let amount = parseFloat(document.getElementById('balanceAmount').value);
-
-            if(!targetId || isNaN(amount) || amount <= 0) { alert("សូមបញ្ចូលលេខ ID និងចំនួនទឹកប្រាក់ឲ្យបានត្រឹមត្រូវ!"); return; }
-
-            let userIndex = users.findIndex(u => u.id === targetId);
-            if(userIndex === -1) { alert("រកមិនឃើញគណនីដែលមាន ID នេះទេ!"); return; }
-
-            if(action === 'add') {
-                users[userIndex].balance = (users[userIndex].balance || 0) + amount;
-                alert(`បានដាក់ប្រាក់ $${amount} ចូលគណនីរបស់ ${users[userIndex].name} ដោយជោគជ័យ!`);
-            } else if (action === 'deduct') {
-                if((users[userIndex].balance || 0) < amount) { alert("ទឹកប្រាក់ក្នុងគណនីអតិថិជននេះមិនមានគ្រប់គ្រាន់សម្រាប់ដកទេ!"); return; }
-                users[userIndex].balance -= amount;
-                alert(`បានដកប្រាក់ $${amount} ពីគណនីរបស់ ${users[userIndex].name} ដោយជោគជ័យ!`);
-            }
+        // TICKET CHAT SYSTEM (Support Ticket Flow)
+        function handleChatClick() {
+            if(!currentUser) { alert("សូម Login ជាមុនសិន!"); return; }
+            toggleSidebar(); // Hide sidebar
+            document.getElementById('sidebarOverlay').classList.add('active'); // Keep overlay
             
-            localStorage.setItem('myUsers', JSON.stringify(users));
-            document.getElementById('targetUserID').value = ""; document.getElementById('balanceAmount').value = "";
+            if (currentUser.role === 'admin') {
+                openAdminInbox();
+            } else {
+                // Normal user goes straight to their own room
+                currentChatRoom = currentUser.username;
+                document.getElementById('chatModal').classList.add('active');
+                renderChatMessages();
+            }
         }
 
-        // Chat System (សង្ខេប)
-        function openChatModal() { if(!currentUser) { alert("សូម Login ជាមុនសិន!"); return; } openModal('chatModal'); renderChatMessages(); }
+        // Admin Inbox View
+        function openAdminInbox() {
+            // Get unique users who have sent a message (or admin has replied to)
+            let allRooms = globalChats.map(m => m.roomId).filter(r => r && r !== 'admin'); 
+            let uniqueUsers = [...new Set(allRooms)];
+            
+            let container = document.getElementById("inboxListContainer");
+            container.innerHTML = "";
+            
+            if (uniqueUsers.length === 0) {
+                container.innerHTML = "<p style='text-align:center; color:#8c8ea8;'>មិនទាន់មានអតិថិជនឆាតមកទេ!</p>";
+            } else {
+                uniqueUsers.forEach(userRoom => {
+                    let userMsgs = globalChats.filter(m => m.roomId === userRoom);
+                    let lastMsg = userMsgs[userMsgs.length - 1];
+                    let preview = lastMsg.type === 'text' ? lastMsg.content : (lastMsg.type === 'image' ? '📷 បានផ្ញើរូបភាព' : '🎤 បានផ្ញើសំឡេង');
+                    
+                    container.innerHTML += `
+                    <div class="ticket-item" onclick="openAdminChat('${userRoom}')">
+                        <div>
+                            <div class="ticket-name">@${userRoom}</div>
+                            <div class="ticket-preview">${lastMsg.sender === 'admin' ? 'អ្នក: ' : ''}${preview}</div>
+                        </div>
+                        <span style="color:#4ade80;">➔</span>
+                    </div>`;
+                });
+            }
+            document.getElementById('adminInboxModal').classList.add('active');
+        }
+
+        // Admin clicks a specific ticket
+        function openAdminChat(userRoom) {
+            currentChatRoom = userRoom;
+            document.getElementById('adminInboxModal').classList.remove('active'); // hide inbox
+            document.getElementById('chatModal').classList.add('active'); // show private chat
+            renderChatMessages();
+        }
+
+        // Admin goes back to inbox
+        function backToInbox() {
+            document.getElementById('chatModal').classList.remove('active');
+            openAdminInbox();
+        }
+
+        // Render Chat based on Current Room
         function renderChatMessages() {
             const box = document.getElementById("chatBox"); box.innerHTML = "";
-            globalChats.forEach(msg => {
-                let isMe = (msg.sender === currentUser.username);
+            
+            // Adjust Header Title & Back Button
+            if (currentUser.role === 'admin') {
+                document.getElementById('chatTitle').innerText = `💬 ឆាតជាមួយ @${currentChatRoom}`;
+                document.getElementById('chatBackBtn').style.display = 'block';
+            } else {
+                document.getElementById('chatTitle').innerText = `💬 ជំនួយការអតិថិជន`;
+                document.getElementById('chatBackBtn').style.display = 'none';
+            }
+
+            // Filter messages for this specific room
+            let roomMessages = globalChats.filter(m => m.roomId === currentChatRoom || (!m.roomId && m.sender === currentChatRoom)); // Fallback for old msgs
+
+            roomMessages.forEach(msg => {
+                let isMe = (msg.sender === currentUser.username) || (currentUser.role==='admin' && msg.sender==='admin');
                 let contentHtml = msg.type === 'text' ? msg.content : (msg.type === 'image' ? `<img src="${msg.content}" class="msg-image">` : `<audio controls class="msg-audio" src="${msg.content}"></audio>`);
-                box.innerHTML += `<div class="msg-bubble ${isMe ? 'msg-user' : 'msg-admin'}"><span class="msg-sender">${isMe ? 'អ្នក' : (msg.role === 'admin' ? '👑 Admin' : msg.sender)}</span>${contentHtml}</div>`;
+                
+                let displayName = isMe ? 'អ្នក' : (msg.role === 'admin' ? '👑 Admin' : msg.sender);
+                box.innerHTML += `<div class="msg-bubble ${isMe ? 'msg-user' : 'msg-admin'}"><span class="msg-sender">${displayName}</span>${contentHtml}</div>`;
             });
             box.scrollTop = box.scrollHeight;
         }
+
+        // Save Message with Room ID
         function saveMessage(content, type) {
-            globalChats.push({ sender: currentUser.username, role: currentUser.role, type: type, content: content });
-            localStorage.setItem('myChats', JSON.stringify(globalChats)); renderChatMessages();
+            let msgSender = currentUser.role === 'admin' ? 'admin' : currentUser.username;
+            globalChats.push({
+                roomId: currentChatRoom, // Assign to current open ticket
+                sender: msgSender, 
+                role: currentUser.role, 
+                type: type, 
+                content: content 
+            });
+            localStorage.setItem('myChats', JSON.stringify(globalChats)); 
+            renderChatMessages();
         }
+
+        // Chat Inputs
         function sendTextMessage() { let input = document.getElementById("chatInputText"); if(input.value.trim() !== "") { saveMessage(input.value, 'text'); input.value = ""; } }
         function sendImage(event) { let file = event.target.files[0]; if(file) { let r = new FileReader(); r.onload = e => saveMessage(e.target.result, 'image'); r.readAsDataURL(file); } }
         
+        // Voice Record
         let mediaRecorder, audioChunks = [];
         async function toggleVoiceRecord() {
             let micBtn = document.getElementById('micBtn');
@@ -422,6 +478,33 @@
                     mediaRecorder.start(); micBtn.classList.add('recording');
                 } catch (err) { alert("មិនអាចថតសំឡេងបានទេ! សូមបើកសិទ្ធិ Microphone។"); }
             } else { mediaRecorder.stop(); micBtn.classList.remove('recording'); }
+        }
+
+        // Admin Products & Money functions
+        function addNewProduct() {
+            const img = document.getElementById('ap_img').value, title = document.getElementById('ap_title').value, price = document.getElementById('ap_price').value;
+            if(img && title && price) { products.push({ img, title, price }); localStorage.setItem('myProducts', JSON.stringify(products)); renderProducts(); alert("បានផុសដោយជោគជ័យ!"); }
+        }
+        function manageBalance(action) {
+            let targetId = document.getElementById('targetUserID').value.trim(); let amount = parseFloat(document.getElementById('balanceAmount').value);
+            if(!targetId || isNaN(amount) || amount <= 0) return alert("បញ្ចូល ID និងលុយឲ្យត្រូវ!");
+            let userIndex = users.findIndex(u => u.id === targetId);
+            if(userIndex === -1) return alert("រកមិនឃើញ ID នេះទេ!");
+            if(action === 'add') { users[userIndex].balance = (users[userIndex].balance || 0) + amount; alert(`បានដាក់ប្រាក់ $${amount}`); }
+            else if (action === 'deduct') {
+                if((users[userIndex].balance || 0) < amount) return alert("លុយអតិថិជនមិនគ្រប់សម្រាប់ដកទេ!");
+                users[userIndex].balance -= amount; alert(`បានដកប្រាក់ $${amount}`);
+            }
+            localStorage.setItem('myUsers', JSON.stringify(users));
+        }
+
+        // Order History
+        function openOrderHistory() {
+            if(!currentUser || currentUser.role === 'admin') return;
+            const container = document.getElementById("orderListContainer"); container.innerHTML = "";
+            if(!currentUser.orders || currentUser.orders.length === 0) container.innerHTML = "<p style='text-align:center;'>គ្មានប្រវត្តិទិញទេ!</p>";
+            else currentUser.orders.forEach(order => container.innerHTML += `<div class="order-item"><img src="${order.img}"><div><h4>${order.title}</h4><p>${order.price}</p></div></div>`);
+            openModal('orderModal');
         }
     </script>
 </body>
