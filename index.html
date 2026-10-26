@@ -174,6 +174,18 @@
         <div id="orderListContainer" style="max-height: 300px; overflow-y: auto;"></div>
     </div>
 
+    <!-- Modal បញ្ជាក់ការទិញ និងបង្ហាញកូដ -->
+    <div class="modal" id="purchaseSuccessModal">
+        <div class="modal-header"><h3 style="color:#4ade80;">🎉 ទិញបានសម្រេច!</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
+        <div style="text-align:center; padding: 10px;">
+            <p style="font-size: 14px; margin-bottom: 15px;">សូម Copy កូដខាងក្រោមផ្ញើទៅកាន់ Admin តាមរយៈឆាត ដើម្បីទទួលយកគណនី (Username & Password) របស់អ្នក៖</p>
+            <div style="background: #272945; padding: 15px; border-radius: 8px; border: 1px dashed #4ade80; margin-bottom: 15px;">
+                <span id="displaySecretCode" style="font-size: 20px; font-weight: bold; color: #4ade80; font-family: 'Poppins', sans-serif;"></span>
+            </div>
+            <button class="submit-btn" style="background: #fff; color: #000;" onclick="copyAndChat()">📋 Copy រួចឆាតទៅ Admin</button>
+        </div>
+    </div>
+
     <div class="modal" id="adminInboxModal">
         <div class="modal-header"><h3>📥 សារពីអតិថិជន (Inbox)</h3><span class="close-modal" onclick="closeModals()">✖</span></div>
         <div id="inboxListContainer" style="max-height: 400px; overflow-y: auto;"></div>
@@ -204,6 +216,9 @@
         <div class="input-group"><input type="text" id="ap_img" placeholder="Link រូបភាព" style="background:#121322; color:#fff; border:1px solid #36395e;"></div>
         <div class="input-group"><input type="text" id="ap_title" placeholder="ចំណងជើង" style="background:#121322; color:#fff; border:1px solid #36395e;"></div>
         <div class="input-group"><input type="text" id="ap_price" placeholder="តម្លៃ (ឧ. $1.25)" style="background:#121322; color:#fff; border:1px solid #36395e;"></div>
+        <!-- នេះគឺជាប្រអប់ថ្មីសម្រាប់ដាក់កូដសម្ងាត់គណនី -->
+        <div class="input-group"><input type="text" id="ap_secret_code" placeholder="កូដសម្ងាត់គណនីលក់ (ឧ. ACC-001)" style="background:#121322; color:#fff; border:1px solid #36395e;"></div>
+        
         <button class="submit-btn" style="background:#fff; color:#000;" onclick="addNewProduct()">+ ផុសលក់ឥឡូវនេះ</button>
         <div class="admin-divider"></div>
         <div style="font-weight:bold; margin-bottom:10px;">⚙️ គ្រប់គ្រងទំនិញ</div>
@@ -253,7 +268,7 @@
         db.ref('products').on('value', snap => {
             let data = snap.val() || [];
             products = Array.isArray(data) ? data : Object.values(data);
-            if(products.length === 0) products = [{ img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25' }];
+            if(products.length === 0) products = [{ img: 'https://img.sanishtech.com/u/2686cadce80ef1fdd79a01a6183e7017.png', title: '. LV 2807 + V3', price: '$1.25', secretCode: 'KZN-FREE-001' }];
             renderProducts();
             if(currentUser && currentUser.role === 'admin') renderAdminProductList();
         });
@@ -301,7 +316,6 @@
             }
         }
 
-        // Dark / Light Mode
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
             document.getElementById('themeToggleBtn').innerText = document.body.classList.contains('light-mode') ? '🌙' : '☀️'; 
@@ -322,32 +336,46 @@
                 container.innerHTML += `<div class="product-card"><img src="${p.img}" class="product-image"><div class="product-content"><h3 class="product-title">${p.title}</h3><div class="product-footer"><div class="product-price">${p.price}</div><button class="buy-btn" onclick="buyProduct(${index})">ទិញឥឡូវនេះ</button></div></div></div>`;
             });
         }
+        
         function renderAdminProductList() {
             const list = document.getElementById("adminProductList"); list.innerHTML = "";
             if (products.length === 0) { list.innerHTML = "<p style='font-size:12px; color:#888;'>មិនទាន់មានទំនិញលក់ទេ!</p>"; return; }
             products.forEach((p, index) => {
-                list.innerHTML += `<div class="admin-prod-item"><div class="admin-prod-info"><h4>${p.title}</h4><p>${p.price}</p></div><div class="admin-prod-actions"><button class="btn-edit" onclick="editProductPrice(${index})">កែតម្លៃ</button><button class="btn-del" onclick="deleteProduct(${index})">លុប</button></div></div>`;
+                list.innerHTML += `<div class="admin-prod-item"><div class="admin-prod-info"><h4>${p.title}</h4><p>${p.price}</p><p style="font-size:11px; color:#8c8ea8;">កូដ: ${p.secretCode || 'គ្មានកូដ'}</p></div><div class="admin-prod-actions"><button class="btn-edit" onclick="editProductPrice(${index})">កែតម្លៃ</button><button class="btn-del" onclick="deleteProduct(${index})">លុប</button></div></div>`;
             });
         }
 
-        // Admin ផុសទំនិញ
+        // Admin ផុសទំនិញ (អាប់ដេតយកកូដសម្ងាត់)
         function addNewProduct() {
-            const img = document.getElementById('ap_img').value, title = document.getElementById('ap_title').value, price = document.getElementById('ap_price').value;
-            if(img && title && price) { products.push({ img, title, price }); saveProductsToDB(); alert("បានផុសដោយជោគជ័យ!"); document.getElementById('ap_img').value = ""; document.getElementById('ap_title').value = ""; document.getElementById('ap_price').value = ""; }
+            const img = document.getElementById('ap_img').value, 
+                  title = document.getElementById('ap_title').value, 
+                  price = document.getElementById('ap_price').value,
+                  secretCode = document.getElementById('ap_secret_code').value;
+                  
+            if(img && title && price && secretCode) { 
+                products.push({ img, title, price, secretCode }); 
+                saveProductsToDB(); 
+                alert("បានផុសដោយជោគជ័យ!"); 
+                document.getElementById('ap_img').value = ""; document.getElementById('ap_title').value = ""; document.getElementById('ap_price').value = ""; document.getElementById('ap_secret_code').value = "";
+            } else {
+                alert("សូមបំពេញព័ត៌មានឲ្យគ្រប់គ្រាន់ (រួមទាំងកូដសម្ងាត់គណនី)!");
+            }
         }
+        
         function deleteProduct(index) { if(confirm("តើអ្នកពិតជាចង់លុបទំនិញនេះមែនទេ?")) { products.splice(index, 1); saveProductsToDB(); } }
         function editProductPrice(index) {
             let newPrice = prompt(`សូមបញ្ចូលតម្លៃថ្មី៖`, products[index].price);
             if (newPrice && newPrice.trim() !== "") { products[index].price = newPrice; saveProductsToDB(); alert("បានផ្លាស់ប្តូរតម្លៃជោគជ័យ!"); }
         }
 
-        // ការទិញទំនិញ
+        // ការទិញទំនិញ និងបង្ហាញកូដសម្ងាត់
         function buyProduct(index) {
             if (!currentUser) { alert("សូមចូលគណនី (Login) ជាមុនសិន!"); openModal('loginModal'); return; }
             if (currentUser.role === 'admin') { alert("Admin មិនអាចទិញទំនិញបានទេ!"); return; }
             let priceNum = parseFloat(products[index].price.replace(/[^0-9.]/g, '')) || 0; 
             if ((currentUser.balance || 0) < priceNum) return alert(`ទឹកប្រាក់របស់អ្នកមិនគ្រប់គ្រាន់ទេ! (មានត្រឹម $${currentUser.balance || 0})`);
             
+            // កាត់លុយ
             currentUser.balance -= priceNum; 
             currentUser.orders = currentUser.orders || []; 
             currentUser.orders.push(products[index]);
@@ -358,7 +386,31 @@
             saveUsersToDB(); 
             localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
             updateProfileUI(); 
-            alert("🎉 អ្នកបានបញ្ជាទិញជោគជ័យ!");
+            
+            // លោតផ្ទាំងកូដសម្ងាត់
+            let theCode = products[index].secretCode || "កូដមិនបានកំណត់ដោយ Admin";
+            document.getElementById('displaySecretCode').innerText = theCode;
+            openModal('purchaseSuccessModal');
+        }
+
+        // មុខងារ Copy កូដ និងបើកឆាត
+        function copyAndChat() {
+            const code = document.getElementById('displaySecretCode').innerText;
+            const textToCopy = "សួស្តី Admin ខ្ញុំទើបតែបានទិញគណនី! នេះជាកូដសម្ងាត់របស់ខ្ញុំ៖ " + code;
+            
+            // Copy ទៅកាន់ Clipboard
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("បាន Copy កូដជោគជ័យ! សូមចុច 'បញ្ជូន' (Send) នៅក្នុងប្រអប់ឆាតនេះដើម្បីផ្ញើទៅ Admin។");
+                closeModals();
+                handleChatClick(); // បើកផ្ទាំងឆាត
+                
+                // ដាក់កូដចូលប្រអប់ឆាតឲ្យស្រាប់
+                setTimeout(() => {
+                    document.getElementById("chatInputText").value = textToCopy;
+                }, 500);
+            }).catch(err => {
+                alert("មិនអាច Copy ដោយស្វ័យប្រវត្តិបានទេ។ សូមកត់កូដទុកដោយខ្លួនឯង!");
+            });
         }
 
         // UI Controls
@@ -380,7 +432,7 @@
             }
         }
 
-        // Authentication (បានជួសជុលបញ្ហា Array)
+        // Authentication
         function registerUser() {
             try {
                 const name = document.getElementById('regName').value;
